@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9FDCDEAB-AFC3-4A56-92BF-373C882AA9D0}</ProjectGuid>
+    <ProjectGuid>{03D4B653-80F7-40AE-BEA5-5E0741FA7FA5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PhotoStory.Tests</RootNamespace>
@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhotoStory\PhotoStory.csproj">
-      <Project>{123BAB54-60E9-4542-9055-B9B778600031}</Project>
+      <Project>{A931DF16-891D-4FDD-A984-092DFD8DB599}</Project>
       <Name>PhotoStory</Name>
     </ProjectReference>
   </ItemGroup>
