@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStory", "PhotoStory\Ph
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStory.Tests", "PhotoStory.Tests\PhotoStory.Tests.csproj", "{03D4B653-80F7-40AE-BEA5-5E0741FA7FA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStoryEntities", "PhotoStoryEntities\PhotoStoryEntities.csproj", "{C22E9ABD-6849-474A-B69F-F6F7A7466B1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStoryProgram", "PhotoStoryProgram\PhotoStoryProgram.csproj", "{23349FF4-6A96-4000-B17E-ECD73DB06C20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{03D4B653-80F7-40AE-BEA5-5E0741FA7FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03D4B653-80F7-40AE-BEA5-5E0741FA7FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03D4B653-80F7-40AE-BEA5-5E0741FA7FA5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C22E9ABD-6849-474A-B69F-F6F7A7466B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C22E9ABD-6849-474A-B69F-F6F7A7466B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C22E9ABD-6849-474A-B69F-F6F7A7466B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C22E9ABD-6849-474A-B69F-F6F7A7466B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23349FF4-6A96-4000-B17E-ECD73DB06C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23349FF4-6A96-4000-B17E-ECD73DB06C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23349FF4-6A96-4000-B17E-ECD73DB06C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23349FF4-6A96-4000-B17E-ECD73DB06C20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

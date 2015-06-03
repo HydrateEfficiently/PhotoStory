@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhotoStory.Models.Users;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,10 +12,15 @@ namespace PhotoStory.Models.Photos {
 
 		private Stream _stream;
 
-		public string FileName {
-			get;
-			private set;
-		}
+		public int Id { get; set; }
+
+		public DateTime UploadTime { get; set; }
+
+		public string Key { get; set; }
+
+		public string FileName { get; set; }
+
+		public User User { get; set; }
 
 		public string Extension {
 			get {
@@ -32,6 +38,8 @@ namespace PhotoStory.Models.Photos {
 			_stream = File.Open(path, FileMode.Open);
 			FileName = Path.GetFileName(path).ToLower();
 		}
+
+		public Photo() { }
 
 		public async Task<Stream> GetStream() {
 			var ms = new MemoryStream();

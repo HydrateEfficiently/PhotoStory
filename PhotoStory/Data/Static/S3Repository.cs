@@ -1,15 +1,12 @@
 ﻿using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using PhotoStory.Models.Photos;
 using System.Threading.Tasks;
 
-namespace PhotoStory.Models.Photos {
+namespace PhotoStory.Data.Static {
 
-	public class S3PhotoRepository : PhotoRepository {
+	public class S3Repository : Repository {
 
 		private const string BucketName = "mdfw-photoblog-dev-1";
 		private const string AccessKey = "AKIAICM6SKXHIFPATSBQ";

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PhotoStory.Controllers {
+namespace PhotoStory.Controllers.Mvc {
+
 	public class HomeController : Controller {
 		public ActionResult Index() {
 			return View();
