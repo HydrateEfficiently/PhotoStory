@@ -9,11 +9,9 @@ namespace PhotoStoryProgram {
 	class Program {
 
 		static void Main(string[] args) {
-			var entity = new PhotoStory.Data.Relational.Entities.Users.User(new PhotoStory.Models.Users.User() {
+			var entity = new PhotoStory.Data.Relational.Entities.Account.User(new PhotoStory.Models.Account.User() {
 				Id = 5,
-				UserName = "michael.fry",
-				FirstName = "Michael",
-				LastName = "Fry"
+				UserName = "michael.fry"
 			});
 
 			var model = entity.ToModel();

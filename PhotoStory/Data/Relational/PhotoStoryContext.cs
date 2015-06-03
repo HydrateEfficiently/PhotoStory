@@ -1,5 +1,5 @@
-﻿using PhotoStory.Data.Relational.Entities.Photos;
-using PhotoStory.Data.Relational.Entities.Users;
+﻿using PhotoStory.Data.Relational.Entities.Photo;
+using PhotoStory.Data.Relational.Entities.Account;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,7 +12,7 @@ namespace PhotoStory.Data.Relational {
 
 	public class PhotoStoryContext : DbContext {
 
-		public PhotoStoryContext() : base("PhotoStoryContext") { }
+		public PhotoStoryContext() : base("DefaultConnection") { }
 
 		public DbSet<User> Users { get; set; }
 

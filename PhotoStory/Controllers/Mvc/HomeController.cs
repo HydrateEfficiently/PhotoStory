@@ -7,8 +7,9 @@ using System.Web.Mvc;
 namespace PhotoStory.Controllers.Mvc {
 
 	public class HomeController : Controller {
+
 		public ActionResult Index() {
-			return View();
+			return RedirectToAction("Login", "Account");
 		}
 	}
 }
