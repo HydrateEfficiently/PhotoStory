@@ -28,15 +28,36 @@ header {
     font-size: 30px;
 }
 
-@navbarProfileImageDimension: 15px;
-.navbar-profile-image {
-    width: @navbarProfileImageDimension;
-    height: @navbarProfileImageDimension;
+.profile-image {
     border-radius: 20%;
     overflow:hidden;
 }
 
-table .form-table > * {
-    font-weight: bold
+@navbarProfileImageDimension: 15px;
+.navbar-profile-image {
+    width: @navbarProfileImageDimension;
+    height: @navbarProfileImageDimension;
 }
 
+@storyProfileImageDimension: 140px;
+.story-profile-image {
+    width: @storyProfileImageDimension;
+    height: @storyProfileImageDimension;
+}
+
+.story-username-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.centered-image-workaround {
+    height:100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.centered-image-workaround td {
+    text-align: center;
+}

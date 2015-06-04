@@ -22,5 +22,11 @@ namespace PhotoStory.Models.Account {
 		[Required]
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
+
+		public string ProfileImageUrl { get; set; }
+
+		public User() {
+			ProfileImageUrl = "~/Content/default-profile.jpg";
+		}
 	}
 }

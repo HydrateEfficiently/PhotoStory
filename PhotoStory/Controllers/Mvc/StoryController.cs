@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhotoStory.Models.Stories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace PhotoStory.Controllers.Mvc {
 	public class StoryController : BaseController {
 
 		public ActionResult Index() {
-			return View();
+			return View(new Story(CurrentUser));
 		}
 
 	}

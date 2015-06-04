@@ -1,0 +1,29 @@
+﻿@model PhotoStory.Models.Stories.Story
+
+@{
+    ViewBag.Title = "Story";
+}
+
+<div class="container">
+	<div>
+		<table class="centered-image-workaround">
+			<tr>
+				<td><img class="profile-image story-profile-image" src="@Url.Content(Model.User.ProfileImageUrl)" /></td>
+			</tr>
+		</table>
+		<h2 class="story-username-title">@Model.User.UserName</h2>
+	</div>
+
+	<input id="input-701" name="kartik-input-701[]" type="file" multiple=true class="file-loading">
+
+@section Scripts {
+	<script>
+		$("#input-701").fileinput({
+			uploadUrl: "http://localhost/file-upload-batch/1", // server upload action
+			uploadAsync: true,
+			maxFileCount: 5
+		});
+	</script>
+}
+</div>
+
