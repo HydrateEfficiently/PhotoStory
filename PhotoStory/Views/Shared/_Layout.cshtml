@@ -8,19 +8,14 @@
 	@Styles.Render("~/Content/less")
 </head>
 <body>
-	<header>
-		<nav class="navbar navbar-inverse navbar-static-top">
-			<div class="container">
-				<a class="navbar-brand" href="#">PhotoStory</a>
-				@Html.Partial("~/Views/Shared/_NavigationAuthentication.cshtml");
-			</div>
-		</nav>
-	</header>
+	<nav class="navbar navbar-inverse navbar-static-top navbar-photo-story">
+		<div class="container">
+			<a class="navbar-brand" href="#">PhotoStory</a>
+			@Html.Partial("~/Views/Shared/_NavigationAuthentication.cshtml");
+		</div>
+	</nav>
 	
-	<div style="padding-top: 20px;">
-		@RenderBody()
-	</div>
-	
+    @RenderBody()
 
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrapjs")
