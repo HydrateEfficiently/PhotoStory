@@ -174,7 +174,6 @@
     <Compile Include="Controllers\Api\AccountController.cs" />
     <Compile Include="Controllers\Mvc\AccountController.cs" />
     <Compile Include="Controllers\Mvc\StoryController.cs" />
-    <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
     <Compile Include="Data\Relational\Entities\ModelMappingAttribute.cs" />
     <Compile Include="Data\Static\Photo\LocalRepository.cs" />

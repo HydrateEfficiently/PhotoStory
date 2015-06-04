@@ -1,4 +1,5 @@
 ﻿using PhotoStory.Models.Account;
+using PhotoStory.ViewModels.Account;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
@@ -21,7 +22,7 @@ namespace PhotoStory.Controllers.Mvc {
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult Login(UserLogin model, string returnUrl) {
+		public ActionResult Login(User_Login model, string returnUrl) {
 			if (Login(model)) {
 				return RedirectToLocal(returnUrl);
 			} else {
@@ -77,7 +78,7 @@ namespace PhotoStory.Controllers.Mvc {
 			return false;
 		}
 
-		private bool Login(UserLogin user) {
+		private bool Login(User_Login user) {
 			return ModelState.IsValid && Login(user.UserName, user.Password);
 		}
 

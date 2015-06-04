@@ -1,5 +1,5 @@
 ﻿@if (ViewData["User"] == null) {
-	@Html.Partial("~/Views/Shared/_NavigationAuthentication.Anonymous.cshtml", new PhotoStory.Models.Account.UserLogin());
+	@Html.Partial("~/Views/Shared/_NavigationAuthentication.Anonymous.cshtml", new PhotoStory.ViewModels.Account.User_Login());
 } else {
 	@Html.Partial("~/Views/Shared/_NavigationAuthentication.User.cshtml", ViewData["User"]);
 }
