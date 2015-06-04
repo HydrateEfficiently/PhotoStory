@@ -19,9 +19,6 @@ namespace PhotoStory.Data.Relational.Entities.Account {
 		[ModelMapping]
 		public string Email { get; set; }
 
-		[ModelMapping]
-		public string Password { get; set; }
-
 		public virtual ICollection<Photo.Photo> Photos { get; set; }
 
 		public User() { }

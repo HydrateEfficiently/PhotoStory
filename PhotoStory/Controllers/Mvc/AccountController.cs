@@ -1,9 +1,5 @@
-﻿using PhotoStory.Models.Account;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PhotoStory.Filters;
+using PhotoStory.Models.Account;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
@@ -11,6 +7,8 @@ using AccountApi = PhotoStory.Controllers.Api.AccountController;
 
 namespace PhotoStory.Controllers.Mvc {
 
+	[Authorize]
+	[InitializeSimpleMembership]
 	public class AccountController : Controller {
 
 		private AccountApi userApi = new AccountApi();
@@ -38,6 +36,12 @@ namespace PhotoStory.Controllers.Mvc {
 			return View(model);
 		}
 
+		[AllowAnonymous]
+		public ActionResult Register() {
+			return View();
+		}
+
+		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
 		public ActionResult Register(User model) {

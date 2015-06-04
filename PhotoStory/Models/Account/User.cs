@@ -22,13 +22,5 @@ namespace PhotoStory.Models.Account {
 		[Required]
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
-
-		public UserLevel UserLevel { get; set; }
-
-		public string UserLevelString {
-			get {
-				return Account.UserLevelString.Get(UserLevel);
-			}
-		}
 	}
 }

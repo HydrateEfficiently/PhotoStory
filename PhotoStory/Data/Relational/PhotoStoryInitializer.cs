@@ -12,8 +12,8 @@ namespace PhotoStory.Data.Relational {
 
 		protected override void Seed(PhotoStoryContext context) {
 			new List<User> {
-				new User() { UserName = "Michael", Email = "michaelfry2002@gmail.com", Password = "password1" },
-				new User() { UserName = "Liz", Email = "michaelfry2002@gmail.com", Password = "password2" }
+				new User() { UserName = "Michael", Email = "michaelfry2002@gmail.com" },
+				new User() { UserName = "Liz", Email = "michaelfry2002@gmail.com" }
 			}.ForEach(u => context.Users.Add(u));
 			context.SaveChanges();
 

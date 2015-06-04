@@ -166,6 +166,7 @@
     <Compile Include="Controllers\Mvc\HomeController.cs" />
     <Compile Include="Controllers\Api\AccountController.cs" />
     <Compile Include="Controllers\Mvc\AccountController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
     <Compile Include="Data\Relational\Entities\ModelMappingAttribute.cs" />
@@ -181,7 +182,6 @@
     </Compile>
     <Compile Include="Data\Relational\Entities\Photo\Photo.cs" />
     <Compile Include="Data\Relational\Entities\Account\User.cs" />
-    <Compile Include="Models\Account\UserLevel.cs" />
     <Compile Include="Models\Photo\Photo.cs" />
     <Compile Include="Models\Account\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,7 +207,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -217,6 +216,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
