@@ -1,0 +1,42 @@
+﻿@navbarHeight: 40px;
+
+header {
+    width: 100%;
+    line-height: @navbarHeight;
+    height: @navbarHeight;
+    margin-bottom: 15px;
+
+    .navbar-inner {
+        border: 0px;
+        border-radius: 0px;
+        padding: 0px;
+        margin: 0px;
+        height: inherit;
+    }
+}
+
+.navbar-register,
+.navbar-brand {
+    @elementHeight: 20px;
+    padding-top: (@navbarHeight - @elementHeight) / 2;
+    padding-bottom: (@navbarHeight - @elementHeight) / 2;
+    line-height: @navbarHeight;
+    height: @navbarHeight;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+@navbarProfileImageDimension: 15px;
+.navbar-profile-image {
+    width: @navbarProfileImageDimension;
+    height: @navbarProfileImageDimension;
+    border-radius: 20%;
+    overflow:hidden;
+}
+
+table .form-table > * {
+    font-weight: bold
+}
+

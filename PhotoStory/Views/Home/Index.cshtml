@@ -1,0 +1,12 @@
+﻿@{
+	ViewBag.Title = "PhotoStory";
+}
+
+@if (WebSecurity.IsAuthenticated) {
+	@Html.Partial("~/Views/Home/_Index.User.cshtml");
+} else {
+	@Html.Partial("~/Views/Home/_Index.Anonymous.cshtml");
+}
+
+
+

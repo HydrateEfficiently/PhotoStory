@@ -1,20 +1,15 @@
-﻿using PhotoStory.Filters;
-using PhotoStory.Models.Account;
+﻿using PhotoStory.Models.Account;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
-using AccountApi = PhotoStory.Controllers.Api.AccountController;
 
 namespace PhotoStory.Controllers.Mvc {
 
 	[Authorize]
-	[InitializeSimpleMembership]
-	public class AccountController : Controller {
-
-		private AccountApi userApi = new AccountApi();
+	public class AccountController : BaseController {
 
 		public ActionResult Index() {
-			return View("~/Views/Users/Users.cshtml", userApi.GetUsers());
+			return View();
 		}
 
 		[AllowAnonymous]
@@ -27,13 +22,12 @@ namespace PhotoStory.Controllers.Mvc {
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
 		public ActionResult Login(UserLogin model, string returnUrl) {
-			if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe)) {
+			if (Login(model)) {
 				return RedirectToLocal(returnUrl);
+			} else {
+				ModelState.AddModelError("", "The user name or password provided is incorrect.");
+				return View(model);
 			}
-
-			// If we got this far, something failed, redisplay form
-			ModelState.AddModelError("", "The user name or password provided is incorrect.");
-			return View(model);
 		}
 
 		[AllowAnonymous]
@@ -45,19 +39,18 @@ namespace PhotoStory.Controllers.Mvc {
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
 		public ActionResult Register(User model) {
-			if (ModelState.IsValid) {
-				// Attempt to register the user
-				try {
-					WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-					WebSecurity.Login(model.UserName, model.Password);
-					return RedirectToAction("Index", "Home");
-				} catch (MembershipCreateUserException e) {
-					ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-				}
+			if (RegisterAndLogin(model)) {
+				return RedirectToAction("Index", "Home");
+			} else {
+				return View(model);
 			}
+		}
 
-			// If we got this far, something failed, redisplay form
-			return View(model);
+		[HttpGet]
+		[AllowAnonymous]
+		public ActionResult Logout() {
+			WebSecurity.Logout();
+			return RedirectToAction("Index", "Home");
 		}
 
 		private ActionResult RedirectToLocal(string returnUrl) {
@@ -68,7 +61,35 @@ namespace PhotoStory.Controllers.Mvc {
 			}
 		}
 
-		private static string ErrorCodeToString(MembershipCreateStatus createStatus) {
+		private bool RegisterAndLogin(User user) {
+			if (ModelState.IsValid) {
+				try {
+					WebSecurity.CreateUserAndAccount(user.UserName, user.Password);
+				} catch (MembershipCreateUserException ex) {
+					ModelState.AddModelError("", ErrorCodeToString(ex.StatusCode));
+				}
+
+				if (ModelState.IsValid) {
+					Login(user.UserName, user.Password);
+					return true;
+				}
+			}
+			return false;
+		}
+
+		private bool Login(UserLogin user) {
+			return ModelState.IsValid && Login(user.UserName, user.Password);
+		}
+
+		private bool Login(string userName, string password) {
+			if (WebSecurity.Login(userName, password, true)) {
+				PopulateCurrentUser();
+				return true;
+			}
+			return false;
+		}
+
+		private string ErrorCodeToString(MembershipCreateStatus createStatus) {
 			// See http://go.microsoft.com/fwlink/?LinkID=177550 for
 			// a full list of status codes.
 			switch (createStatus) {

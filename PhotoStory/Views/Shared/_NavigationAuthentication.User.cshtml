@@ -1,0 +1,14 @@
+﻿@model PhotoStory.Models.Account.User
+
+<div class="navbar-btn btn-group navbar-right">
+	<button type="button" class="btn btn-primary"><img class="navbar-profile-image" src="~/Content/default-profile.jpg" /><span> @Model.UserName</span></button>
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+		<span class="caret"></span>
+		<span class="sr-only">Toggle Dropdown</span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="#">Account</a></li>
+		<li class="divider"></li>
+		<li><a href="@Url.Action("Logout", "Account")">Log out</a></li>
+	</ul>
+</div>

@@ -1,0 +1,13 @@
+﻿@model PhotoStory.Models.Account.UserLogin
+
+<a class="navbar-right navbar-register" href="@Url.Action("Register", "Account")">Register</a>
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "navbar-form navbar-right" })) {
+	@Html.AntiForgeryToken()
+	<div class="form-group">
+		@Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Username" })
+	</div>
+	<div class="form-group">
+		@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+	</div>
+	<button type="submit" class="btn btn-success">Sign in</button>
+}
