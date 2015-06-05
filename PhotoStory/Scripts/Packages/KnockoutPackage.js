@@ -32,6 +32,14 @@
 		}
 	};
 
+	ko.subscribable.fn.subscribeOnce = function (handler, owner, eventName) {
+		var subscription = this.subscribe(function (newValue) {
+				subscription.dispose();
+				handler(newValue);
+			}, owner, eventName);
+		return subscription;
+	};
+
 	ko.bindingHandlers.bootstrapFileInput = {
 		init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
 			require(["fileinput"], function () {

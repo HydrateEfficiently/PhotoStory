@@ -3,15 +3,13 @@
 
 	<div class="element-group">
 		<input type="text" class="form-control" placeholder="Chapter name" data-bind="value: Title" />
-
-		<input data-bind="bootstrapFileInput: FileInput" type="file" multiple="true" class="file-loading" />
-
+        <input data-bind="element: FileInputElement" type="file" multiple="true" class="file-loading" />
 		<textarea class="form-control" style="height: 75px;"></textarea>
 	</div>
 
 	<div class="pull-right-group">
 		<input type="button" class="btn btn-danger" value="Cancel" />
-		<input type="button" class="btn btn-success" value="Publish" data-bind="click: toggleEnabled" />
+		<input type="button" class="btn btn-success" value="Publish" />
 	</div>
 
 	
