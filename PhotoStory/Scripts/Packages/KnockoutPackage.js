@@ -36,15 +36,16 @@
 		init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
 			require(["fileinput"], function () {
 				var fileInput = $(element).fileinput({
-					uploadUrl: "http://localhost/file-upload-batch/1", // server upload action
-					uploadAsync: true,
-					maxFileCount: 20,
-					previewFileType: "image",
-					previewSettings: {
-						image: { width: "120px", height: "auto" }
-					},
-					layoutTemplates: {
-						actions:
+						uploadUrl: "http://localhost/file-upload-batch/1", // server upload action
+						uploadAsync: true,
+						maxFileCount: 20,
+						previewFileType: "image",
+						dropZoneTitle: "Drag and drop your images here...",
+						previewSettings: {
+							image: { width: "120px", height: "auto" }
+						},
+						layoutTemplates: {
+							actions:
 								'<div class="file-actions">\n' +
 								'    <div class="file-footer-buttons">\n' +
 								'        {delete}' +
@@ -52,10 +53,10 @@
 								'    <div class="file-upload-indicator" tabindex="-1" title="{indicatorTitle}">{indicator}</div>\n' +
 								'    <div class="clearfix"></div>\n' +
 								'</div>'
-					}
+						}
 				});
 
-				valueAccessor()($(fileInput).data('fileinput'));
+				valueAccessor()($(element));
 			});
 		}
 	};

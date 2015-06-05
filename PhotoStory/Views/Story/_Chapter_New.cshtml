@@ -1,11 +1,19 @@
 ﻿<fieldset class="fieldset-chapter">
-	<legend class="legend-chapter" data-bind="text: Title">New chapter</legend>
+	<legend class="legend-chapter">Chapter I<span data-bind="visible: !!Title()">: </span><span data-bind="text: Title"></span></legend>
 
-	<span>Title </span><input placeholder="Test chapter title" type="text" data-bind="valueOrPlaceholder: Title" />
+	<div class="element-group">
+		<input type="text" class="form-control" placeholder="Chapter name" data-bind="value: Title" />
 
-	<p>Upload images</p>
+		<input data-bind="bootstrapFileInput: FileInput" type="file" multiple="true" class="file-loading" />
 
-	<input type="file" />
+		<textarea class="form-control" style="height: 75px;"></textarea>
+	</div>
 
+	<div class="pull-right-group">
+		<input type="button" class="btn btn-danger" value="Cancel" />
+		<input type="button" class="btn btn-success" value="Publish" data-bind="click: toggleEnabled" />
+	</div>
+
+	
 
 </fieldset>
