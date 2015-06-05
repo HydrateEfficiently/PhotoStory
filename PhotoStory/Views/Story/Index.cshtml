@@ -1,8 +1,4 @@
-﻿@model PhotoStory.Models.Stories.Story
-
-@{
-    ViewBag.Title = "Story";
-}
+﻿@model PhotoStory.ViewModels.Stories.Story_Index
 
 <div class="container" style="margin-top: 20px">
 	<div>
@@ -18,12 +14,20 @@
 
 @section Scripts {
 	<script>
+		require(["@Url.Content("~/Scripts/App.js")"], function (App) {
+			App.whenReady(function () {
+				require(["Scripts/ViewModels/Stories/Story_Index.js"], function (Story_Index) {
+					var vm = Story_Index.create(@Html.Serialize(Model));
+				});
+			});
+		});
+
 		$("#input-701").fileinput({
 			uploadUrl: "http://localhost/file-upload-batch/1", // server upload action
 			uploadAsync: true,
 			maxFileCount: 5
 		});
-	</script>
+</script>
 }
 </div>
 

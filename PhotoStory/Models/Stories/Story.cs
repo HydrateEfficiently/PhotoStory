@@ -9,7 +9,7 @@ namespace PhotoStory.Models.Stories {
 
 	public class Story {
 
-		public User User { get; private set; }
+		public User User { get; set; }
 
 		public Story(User user) {
 			User = user;

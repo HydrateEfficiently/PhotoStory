@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-	@Styles.Render("~/Content/bootstrapcss")
-	@Styles.Render("~/Content/less")
+	@Styles.Render("~/corecss")
+	@Styles.Render("~/coreless")
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-static-top navbar-photo-story">
@@ -17,10 +17,6 @@
 	
     @RenderBody()
 
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/bootstrapjs")
-	@RenderSection("scripts", required: false)
-
 	<div class="container">
 		<hr />
 	</div>
@@ -30,5 +26,22 @@
 			© Michael Fry-White 2015
 		</div>
 	</footer>
+
+	@Scripts.Render("~/corejs")
+	@{
+		var isDebug = 
+#if DEBUG
+			true;
+#else
+			false;
+#endif
+	}
+
+	<script>
+		require(["@Url.Content("~/Scripts/App.js")"], function (App) {
+			App.start(@isDebug.ToString().ToLower())
+		});
+	</script>
+	@RenderSection("scripts", required: false)
 </body>
 </html>
