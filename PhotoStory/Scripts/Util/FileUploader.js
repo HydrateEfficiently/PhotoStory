@@ -68,8 +68,8 @@
 		}
 	};
 
-	FileUploader.prototype.disable = function () {
-		this._doInnerOperation("disable");
+	FileUploader.prototype.disable = function (callback) {
+		this._doInnerOperation("disable", callback);
 	};
 
 	return FileUploader;

@@ -13,7 +13,6 @@
 		this.Photos = ko.observableArray();
 
 		this.FileUploader = new FileUploader(this.FileInputElement);
-		//this.FileUploader.disable();
 	}
 
 	return Chapter_New;
