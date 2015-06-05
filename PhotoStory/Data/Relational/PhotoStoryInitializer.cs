@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Data.Entity;
 using PhotoStory.Data.Relational.Entities.Account;
-using PhotoStory.Data.Relational.Entities.Photo;
+using PhotoStory.Data.Relational.Entities.Photos;
 
 namespace PhotoStory.Data.Relational {
 

@@ -10,7 +10,9 @@
 		<h2 class="story-username-title">@Model.User.UserName</h2>
 	</div>
 
-	<input id="input-701" name="kartik-input-701[]" type="file" multiple=true class="file-loading">
+	<div data-bind="with: Chapter_New">
+		@Html.Partial("~/Views/Story/_Chapter_New.cshtml", new PhotoStory.Models.Stories.Chapter())
+	</div>
 
 @section Scripts {
 	<script>
@@ -20,12 +22,6 @@
 					var vm = Story_Index.create(@Html.Serialize(Model));
 				});
 			});
-		});
-
-		$("#input-701").fileinput({
-			uploadUrl: "http://localhost/file-upload-batch/1", // server upload action
-			uploadAsync: true,
-			maxFileCount: 5
 		});
 </script>
 }

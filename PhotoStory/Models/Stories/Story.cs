@@ -11,6 +11,8 @@ namespace PhotoStory.Models.Stories {
 
 		public User User { get; set; }
 
+		public IEnumerable<Chapter> Chapters { get; set; }
+
 		public Story(User user) {
 			User = user;
 		}

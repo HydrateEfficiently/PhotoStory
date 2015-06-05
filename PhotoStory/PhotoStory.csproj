@@ -175,6 +175,7 @@
     <Compile Include="Controllers\Mvc\AccountController.cs" />
     <Compile Include="Controllers\Mvc\StoryController.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
+    <Compile Include="Models\Stories\Chapter.cs" />
     <Compile Include="Util\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Util\SubModel.cs" />
     <Compile Include="Data\Static\Photo\LocalRepository.cs" />
@@ -189,7 +190,7 @@
     </Compile>
     <Compile Include="Data\Relational\Entities\Photo\Photo.cs" />
     <Compile Include="Data\Relational\Entities\Account\User.cs" />
-    <Compile Include="Models\Photo\Photo.cs" />
+    <Compile Include="Models\Photos\Photo.cs" />
     <Compile Include="Models\Account\User.cs" />
     <Compile Include="Models\Stories\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -242,8 +243,11 @@
     <Content Include="Scripts\knockout.mapping-latest.debug.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\Packages\KnockoutPackage.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\Util\KnockoutExtensions.js" />
+    <Content Include="Scripts\ViewModels\Stories\Chapter_New.js" />
     <Content Include="Scripts\ViewModels\Stories\Story_Index.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -268,10 +272,10 @@
     <Content Include="Views\Shared\_NavigationAuthentication.cshtml" />
     <Content Include="Views\Shared\_NavigationAuthentication.User.cshtml" />
     <Content Include="Views\Story\Index.cshtml" />
+    <Content Include="Views\Story\_Chapter_New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Util\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

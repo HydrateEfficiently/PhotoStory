@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhotoStory.Models.Photo {
+namespace PhotoStory.Models.Photos {
 
 	public class Photo : IDisposable {
 

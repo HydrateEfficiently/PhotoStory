@@ -6,9 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PhotoModel = PhotoStory.Models.Photo.Photo;
+using PhotoModel = PhotoStory.Models.Photos.Photo;
 
-namespace PhotoStory.Data.Relational.Entities.Photo {
+namespace PhotoStory.Data.Relational.Entities.Photos {
 
 	public class Photo : Entity<PhotoModel> {
 

@@ -1,4 +1,4 @@
-﻿using PhotoStory.Data.Relational.Entities.Photo;
+﻿using PhotoStory.Data.Relational.Entities.Photos;
 using PhotoStory.Util;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,7 +20,7 @@ namespace PhotoStory.Data.Relational.Entities.Account {
 		[ModelMapping]
 		public string Email { get; set; }
 
-		public virtual ICollection<Photo.Photo> Photos { get; set; }
+		public virtual ICollection<Photo> Photos { get; set; }
 
 		public User() { }
 

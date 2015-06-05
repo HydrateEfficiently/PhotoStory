@@ -1,17 +1,15 @@
 ﻿define(function (require) {
 
-	var ko = require("knockout"),
-		komapping = require("knockoutmapping");
+	var KnockoutPackage = require("Packages/KnockoutPackage"),
+		ko = KnockoutPackage.ko,
+		komapping = KnockoutPackage.komapping,
+		Chapter_New = require("ViewModels/Stories/Chapter_New");
 
 	function create(data) {
 		var viewModel = komapping.fromJS(data);
 		komapping.fromJS(data, viewModel);
+		viewModel.Chapter_New = ko.observable(new Chapter_New());
 
-		viewModel.testF = function () {
-			console.log("test");
-		};
-
-		viewModel.test = ko.observable("Test");
 
 		ko.applyBindings(viewModel);
 		return viewModel;

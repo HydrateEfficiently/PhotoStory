@@ -7,14 +7,18 @@
 		requirejs.config({
 			baseUrl: "/Scripts",
 			paths: {
+				"jquery": isDebug ? "jquery-2.1.4" : "jquery-2.1.4.min",
 				"knockout": isDebug ? "knockout-3.3.0.debug" : "knockout-3.3.0",
-				"knockoutmapping": isDebug ? "knockout.mapping-latest.debug" : "knockout.mapping-latest.debug"
+				"knockoutmapping": isDebug ? "knockout.mapping-latest.debug" : "knockout.mapping-latest.debug",
+				"bootstrap": isDebug ? "bootstrap" : "bootstrap.min",
+				"fileinput": isDebug ? "fileinput" : "fileinput.min"
 			},
 			shim: {
 				knockoutmapping: {
 					deps: ["knockout"],
 					exports: "komapping"
-				}
+				},
+				fileinput: ["bootstrap"]
 			}
 		});
 		triggerIsReadyCallbacks();

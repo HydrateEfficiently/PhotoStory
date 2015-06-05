@@ -1,4 +1,4 @@
-﻿using PhotoStory.Data.Relational.Entities.Photo;
+﻿using PhotoStory.Data.Relational.Entities.Photos;
 using PhotoStory.Data.Relational.Entities.Account;
 using System;
 using System.Collections.Generic;
