@@ -12,7 +12,15 @@
 		this.FileInputElement = ko.observable();
 		this.Photos = ko.observableArray();
 
-		this.FileUploader = new FileUploader(this.FileInputElement);
+		this.FileUploader = new FileUploader(this.FileInputElement, {
+			uploadUrl: "/test",
+			onUploadSuccess: function (event, data, previewId, index) {
+
+			},
+			onUploadError: function (event, data, previewId, index) {
+				
+			}
+		});
 	}
 
 	return Chapter_New;

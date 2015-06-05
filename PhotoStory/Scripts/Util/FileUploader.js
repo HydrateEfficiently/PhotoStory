@@ -35,6 +35,14 @@
 								'</div>'
 						}});
 
+				if (options.onUploadSuccess) {
+					self._innerFileInput.on("fileuploaded", options.onUploadSuccess);
+				}
+
+				if (options.onUploadError) {
+					self._innerFileInput.on("fileuploaderror", options.onUploadError);
+				}
+
 				var callbacks = self._whenReadyCallbacks,
 					length = callbacks.length,
 					i;
