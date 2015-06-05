@@ -2,7 +2,7 @@
 	<legend class="legend-chapter">Chapter I<span data-bind="visible: !!Title()">: </span><span data-bind="text: Title"></span></legend>
 
 	<div class="element-group">
-		<input type="text" class="form-control" placeholder="Chapter name" data-bind="value: Title" />
+        <input type="text" class="form-control" placeholder="Chapter name" data-bind="value: Title, valueUpdate: 'afterkeydown'" />
         <input data-bind="element: FileInputElement" type="file" multiple="true" class="file-loading" />
 		<textarea class="form-control" style="height: 75px;"></textarea>
 	</div>
@@ -11,7 +11,4 @@
 		<input type="button" class="btn btn-danger" value="Cancel" />
 		<input type="button" class="btn btn-success" value="Publish" />
 	</div>
-
-	
-
 </fieldset>

@@ -309,7 +309,6 @@
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\Util\FileUploader.js" />
-    <Content Include="Scripts\Util\KnockoutExtensions.js" />
     <Content Include="Scripts\ViewModels\Stories\Chapter_New.js" />
     <Content Include="Scripts\ViewModels\Stories\Story_Index.js" />
     <Content Include="Web.config">
