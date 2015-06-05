@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace PhotoStory.Models.Photos {
 
@@ -13,7 +14,11 @@ namespace PhotoStory.Models.Photos {
 
 		private Stream _stream;
 
-		public int Id { get; set; }
+		public int ID { get; set; }
+
+		public int UserID { get; set; }
+
+		public int StoryID { get; set; }
 
 		public DateTime UploadTime { get; set; }
 
@@ -39,6 +44,13 @@ namespace PhotoStory.Models.Photos {
 			get {
 				return string.Format("{0}/{1}_{2}", DirectoryKey, Id, FileName);
 			}
+		}
+
+		public Photo(PhotoUpload photoUpload) {
+			_stream = photoUpload.InputStream;
+			FileName = photoUpload.FileName;
+			StoryId = photoUpload.StoryId;
+			UserId = photoUpload.UserId;
 		}
 
 		public Photo(string path) {

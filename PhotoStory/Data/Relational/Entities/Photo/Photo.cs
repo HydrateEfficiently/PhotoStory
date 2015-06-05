@@ -1,4 +1,5 @@
 ﻿using PhotoStory.Data.Relational.Entities.Account;
+using PhotoStory.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,16 +13,25 @@ namespace PhotoStory.Data.Relational.Entities.Photos {
 
 	public class Photo : Entity<PhotoModel> {
 
-		public int ID { get; set; }
+		[ModelMapping("ID")]
+		public int PhotoID { get; set; }
 
+		[ModelMapping]
 		public DateTime UploadTime { get; set; }
 
-		public string Key { get; set; }
+		[ModelMapping]
+		public string FullKey { get; set; }
 
+		[ModelMapping]
 		public string FileName { get; set; }
 
+		[ModelMapping]
 		public int UserID { get; set; }
 
 		public virtual User User { get; set; }
+
+		public Photo() { }
+
+		public Photo(PhotoModel model) : base(model) { }
 	}
 }

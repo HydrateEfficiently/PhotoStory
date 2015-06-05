@@ -13,12 +13,15 @@
 		this.Photos = ko.observableArray();
 
 		this.FileUploader = new FileUploader(this.FileInputElement, {
-			uploadUrl: "/test",
+			uploadUrl: "/Photo/Upload",
+			uploadExtraData: {
+				TestData: "I AM A STRING"
+			},
 			onUploadSuccess: function (event, data, previewId, index) {
 
 			},
 			onUploadError: function (event, data, previewId, index) {
-				
+
 			}
 		});
 	}

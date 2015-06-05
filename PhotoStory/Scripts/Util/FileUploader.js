@@ -33,7 +33,9 @@
 								'    <div class="file-upload-indicator" tabindex="-1" title="{indicatorTitle}">{indicator}</div>\n' +
 								'    <div class="clearfix"></div>\n' +
 								'</div>'
-						}});
+						},
+						uploadExtraData: options.uploadExtraData
+					});
 
 				if (options.onUploadSuccess) {
 					self._innerFileInput.on("fileuploaded", options.onUploadSuccess);

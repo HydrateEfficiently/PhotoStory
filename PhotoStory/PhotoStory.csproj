@@ -169,12 +169,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\PhotoController.cs" />
     <Compile Include="Controllers\Mvc\BaseController.cs" />
     <Compile Include="Controllers\Mvc\HomeController.cs" />
     <Compile Include="Controllers\Api\AccountController.cs" />
     <Compile Include="Controllers\Mvc\AccountController.cs" />
+    <Compile Include="Controllers\Mvc\PhotoController.cs" />
     <Compile Include="Controllers\Mvc\StoryController.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
+    <Compile Include="Models\Photos\PhotoUpload.cs" />
     <Compile Include="Models\Stories\Chapter.cs" />
     <Compile Include="Util\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Util\SubModel.cs" />
@@ -195,6 +198,7 @@
     <Compile Include="Models\Stories\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\User_Login.cs" />
+    <Compile Include="ViewModels\Photos\Photo_Uploaded.cs" />
     <Compile Include="ViewModels\Stories\Story_Index.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
   </ItemGroup>
