@@ -1,1 +1,11 @@
-﻿<input data-bind="fileInput: { name: 'test', uploadUrl: '/test' }" type="file" class="file-loading">
+﻿<fieldset class="fieldset-chapter">
+	<legend class="legend-chapter" data-bind="text: Title">New chapter</legend>
+
+	<span>Title </span><input placeholder="Test chapter title" type="text" data-bind="valueOrPlaceholder: Title" />
+
+	<p>Upload images</p>
+
+	<input type="file" />
+
+
+</fieldset>
