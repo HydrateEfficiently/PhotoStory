@@ -42,15 +42,15 @@ namespace PhotoStory.Models.Photos {
 
 		public string FullKey {
 			get {
-				return string.Format("{0}/{1}_{2}", DirectoryKey, Id, FileName);
+				return string.Format("{0}/{1}_{2}", DirectoryKey, ID, FileName);
 			}
 		}
 
 		public Photo(PhotoUpload photoUpload) {
 			_stream = photoUpload.InputStream;
 			FileName = photoUpload.FileName;
-			StoryId = photoUpload.StoryId;
-			UserId = photoUpload.UserId;
+			StoryID = photoUpload.StoryID;
+			UserID = photoUpload.UserID;
 		}
 
 		public Photo(string path) {

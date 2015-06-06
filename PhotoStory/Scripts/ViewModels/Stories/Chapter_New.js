@@ -2,7 +2,8 @@
 
 	var KnockoutPackage = require("Packages/KnockoutPackage"),
 		ko = KnockoutPackage.ko,
-		FileUploader = require("Util/FileUploader");
+		FileUploader = require("Util/FileUploader"),
+		CollapsiblePanel = require("Util/CollapsiblePanel");
 
 	function Chapter_New() {
 		var self = this;
@@ -10,6 +11,7 @@
 
 		this.Title = ko.observable();
 		this.FileInputElement = ko.observable();
+		this.CollapsiblePanelElement = ko.observable();
 		this.Photos = ko.observableArray();
 
 		this.FileUploader = new FileUploader(this.FileInputElement, {
@@ -24,6 +26,8 @@
 
 			}
 		});
+
+		this.CollapsiblePanel = new CollapsiblePanel(this.CollapsiblePanelElement);
 	}
 
 	return Chapter_New;

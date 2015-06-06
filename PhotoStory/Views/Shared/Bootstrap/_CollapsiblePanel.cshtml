@@ -1,0 +1,18 @@
+﻿<div class="container">
+	<div class="panel panel-default" data-bind="element: @RenderSection("elementObservableName", required: true)">
+		<div class="panel-heading clickable">
+			<table class="centered-image-workaround">
+				<tr>
+					<td>
+						<button type="button" class="btn">
+							@RenderSection("expandTitle", required: true)
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="panel-body panel-collapsed">
+			@RenderBody()
+		</div>
+	</div>
+</div>

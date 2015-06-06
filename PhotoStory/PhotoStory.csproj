@@ -338,7 +338,9 @@
     <Content Include="Views\Shared\_NavigationAuthentication.cshtml" />
     <Content Include="Views\Shared\_NavigationAuthentication.User.cshtml" />
     <Content Include="Views\Story\Index.cshtml" />
-    <Content Include="Views\Story\_Chapter_New.cshtml" />
+    <Content Include="Views\Chapters\_Chapter_New.cshtml" />
+    <Content Include="Views\Shared\Bootstrap\_CollapsiblePanel.cshtml" />
+    <Content Include="Views\Chapters\_Chapter_New.PanelContents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

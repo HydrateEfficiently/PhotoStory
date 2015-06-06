@@ -1,5 +1,9 @@
 ﻿@model PhotoStory.ViewModels.Stories.Story_Index
 
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <div class="container" style="margin-top: 20px">
 	<div>
 		<table class="centered-image-workaround">
@@ -11,10 +15,10 @@
 	</div>
 
 	<div data-bind="with: Chapter_New">
-		@Html.Partial("~/Views/Story/_Chapter_New.cshtml", new PhotoStory.Models.Stories.Chapter())
+		@Html.Partial("~/Views/Chapters/_Chapter_New.cshtml", new PhotoStory.Models.Stories.Chapter())
 	</div>
 
-@section Scripts {
+@section scripts {
 	<script>
 		require(["@Url.Content("~/Scripts/App.js")"], function (App) {
 			App.whenReady(function () {
@@ -23,7 +27,7 @@
 				});
 			});
 		});
-</script>
+	</script>
 }
 </div>
 

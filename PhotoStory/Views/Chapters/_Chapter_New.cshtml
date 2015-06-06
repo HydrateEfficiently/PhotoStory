@@ -1,5 +1,9 @@
-﻿<fieldset class="fieldset-chapter">
-	<legend class="legend-chapter">Chapter I<span data-bind="visible: !!Title()">: </span><span data-bind="text: Title"></span></legend>
+﻿@{
+	Layout = "~/Views/Shared/Bootstrap/_CollapsiblePanel.cshtml";
+}
+
+
+	<h3 class="legend-chapter">Chapter I<span data-bind="visible: !!Title()">: </span><span data-bind="text: Title"></span></h3>
 
 	<div class="element-group">
         <input type="text" class="form-control" placeholder="Chapter name" data-bind="value: Title, valueUpdate: 'afterkeydown'" />
@@ -9,6 +13,12 @@
 
 	<div class="pull-right-group">
 		<input type="button" class="btn btn-danger" value="Cancel" />
+		<input type="button" class="btn btn-warning" value="Save Draft" />
 		<input type="button" class="btn btn-success" value="Publish" />
 	</div>
-</fieldset>
+
+@section expandTitle {
+	<a>Start your next chapter...</a>
+}
+
+@section elementObservableName {CollapsiblePanelElement}

@@ -25,10 +25,7 @@
 	// Gives access to the element, for integration with non-Knockout operations
 	ko.bindingHandlers.element = {
 		update: function (element, valueAccessor) {
-			if (!this._hasBeenUpdated) {
-				valueAccessor()(element);
-				this._hasBeenUpdated = true;
-			}
+			valueAccessor()(element);
 		}
 	};
 

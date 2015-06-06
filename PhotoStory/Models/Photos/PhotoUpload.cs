@@ -10,9 +10,9 @@ namespace PhotoStory.Models.Photos {
 
 	public class PhotoUpload {
 
-		public int UserId { get; set; }
+		public int UserID { get; set; }
 
-		public int StoryId { get; set; }
+		public int StoryID { get; set; }
 
 		public DateTime UploadTime { get; private set; }
 
