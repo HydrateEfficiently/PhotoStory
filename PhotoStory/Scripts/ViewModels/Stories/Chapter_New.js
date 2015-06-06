@@ -27,7 +27,13 @@
 			}
 		});
 
-		this.CollapsiblePanel = new CollapsiblePanel(this.CollapsiblePanelElement);
+		this.CollapsiblePanel = new CollapsiblePanel(this.CollapsiblePanelElement, {
+			beforeFirstExpansionCallback: function (expansionAction) {
+				setTimeout(function () {
+					expansionAction();
+				}, 1000);
+			}
+		});
 	}
 
 	return Chapter_New;

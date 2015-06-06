@@ -8,6 +8,8 @@
 		options = options || {};
 		this._isReady = false;
 		this._whenReadyCallbacks = [];
+		this._hasBeenOpened = false;
+		this._beforeFirstExpansionCallback = options.beforeFirstExpansionCallback;
 		this._initCollapsiblePanel(elementObservable, options);
 	}
 
@@ -21,13 +23,13 @@
 
 			self._panelBody = $panelBody;
 
-			$panelHeading.on("click", function (e) {
-				self._toggleCollapsed();
-			});
-			$panelHeadingButton.on("click", function (e) {
+			function toggleCollapse() {
 				self._toggleCollapsed();
 				return false;
-			});
+			}
+
+			$panelHeading.on("click", toggleCollapse);
+			$panelHeadingButton.on("click", toggleCollapse);
 			self._triggerReady();
 		});
 	};
@@ -61,16 +63,28 @@
 		this._setCollapsed(!this._isCollapsed());
 	};
 
-	CollapsiblePanel.prototype._setCollapsed = function (collapsed) {
+	CollapsiblePanel.prototype._setCollapsed = function (collapse) {
 		var self = this;
 		this._whenReady(function () {
-			if (collapsed) {
+			if (collapse) {
 				self._panelBody.slideUp(function () {
 					self._panelBody.addClass("panel-collapsed");
 				});
 			} else {
-				self._panelBody.removeClass("panel-collapsed");
-				self._panelBody.slideDown();
+				if (!self._hasBeenOpened ) {
+					if (self._beforeFirstExpansionCallback) {
+						self._beforeFirstExpansionCallback(function () {
+							self._panelBody.slideDown(function () {
+								self._panelBody.removeClass("panel-collapsed");
+							});
+						});
+					}
+					self._hasBeenOpened = true;
+				} else {
+					self._panelBody.slideDown(function () {
+						self._panelBody.removeClass("panel-collapsed");
+					});
+				}
 			}
 		});
 	};
