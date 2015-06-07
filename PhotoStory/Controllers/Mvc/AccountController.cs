@@ -1,5 +1,7 @@
-﻿using PhotoStory.Models.Account;
+﻿using PhotoStory.Data.Relational;
+using PhotoStory.Models.Account;
 using PhotoStory.ViewModels.Account;
+using System;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
@@ -8,6 +10,8 @@ namespace PhotoStory.Controllers.Mvc {
 
 	[Authorize]
 	public class AccountController : BaseController {
+
+		private PhotoStoryContext db = new PhotoStoryContext();
 
 		public ActionResult Index() {
 			return View();
@@ -39,12 +43,24 @@ namespace PhotoStory.Controllers.Mvc {
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult Register(User model) {
-			if (RegisterAndLogin(model)) {
-				return RedirectToAction("Index", "Home");
-			} else {
-				return View(model);
+		public ActionResult Register(User_Register user) {
+			if (ModelState.IsValid) {
+				User userModel = user.ToModel();
+				try {
+					WebSecurity.CreateUserAndAccount(userModel.UserName, userModel.Password);
+				} catch (MembershipCreateUserException ex) {
+					ModelState.AddModelError("", MembershipCreateStatusString.Get(ex.StatusCode));
+				}
+
+				if (ModelState.IsValid) {
+					if (Login(new User_Login(userModel))) {
+						return RedirectToAction("Index", "Home");
+					} else {
+						throw new Exception("TODO: Handle case where user registers successfully but can't login.")
+					}					
+				}
 			}
+			return View(user);
 		}
 
 		[HttpGet]
@@ -62,68 +78,12 @@ namespace PhotoStory.Controllers.Mvc {
 			}
 		}
 
-		private bool RegisterAndLogin(User user) {
-			if (ModelState.IsValid) {
-				try {
-					WebSecurity.CreateUserAndAccount(user.UserName, user.Password);
-				} catch (MembershipCreateUserException ex) {
-					ModelState.AddModelError("", ErrorCodeToString(ex.StatusCode));
-				}
-
-				if (ModelState.IsValid) {
-					Login(user.UserName, user.Password);
-					return true;
-				}
-			}
-			return false;
-		}
-
 		private bool Login(User_Login user) {
-			return ModelState.IsValid && Login(user.UserName, user.Password);
-		}
-
-		private bool Login(string userName, string password) {
-			if (WebSecurity.Login(userName, password, true)) {
+			if (ModelState.IsValid && WebSecurity.Login(user.UserName, user.Password)) {
 				PopulateCurrentUser();
 				return true;
 			}
 			return false;
-		}
-
-		private string ErrorCodeToString(MembershipCreateStatus createStatus) {
-			// See http://go.microsoft.com/fwlink/?LinkID=177550 for
-			// a full list of status codes.
-			switch (createStatus) {
-				case MembershipCreateStatus.DuplicateUserName:
-					return "User name already exists. Please enter a different user name.";
-
-				case MembershipCreateStatus.DuplicateEmail:
-					return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
-
-				case MembershipCreateStatus.InvalidPassword:
-					return "The password provided is invalid. Please enter a valid password value.";
-
-				case MembershipCreateStatus.InvalidEmail:
-					return "The e-mail address provided is invalid. Please check the value and try again.";
-
-				case MembershipCreateStatus.InvalidAnswer:
-					return "The password retrieval answer provided is invalid. Please check the value and try again.";
-
-				case MembershipCreateStatus.InvalidQuestion:
-					return "The password retrieval question provided is invalid. Please check the value and try again.";
-
-				case MembershipCreateStatus.InvalidUserName:
-					return "The user name provided is invalid. Please check the value and try again.";
-
-				case MembershipCreateStatus.ProviderError:
-					return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
-
-				case MembershipCreateStatus.UserRejected:
-					return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
-
-				default:
-					return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
-			}
 		}
 	}
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStory.ViewModels {
 
-	public class ViewModel<TModel> : SubModel<TModel> {
+	public abstract class ViewModel<TModel> : SubModel<TModel> {
 
 		public ViewModel() { }
 
