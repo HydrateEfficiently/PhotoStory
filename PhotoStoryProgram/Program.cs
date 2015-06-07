@@ -10,7 +10,7 @@ namespace PhotoStoryProgram {
 
 		static void Main(string[] args) {
 			var entity = new PhotoStory.Data.Relational.Entities.Account.User(new PhotoStory.Models.Account.User() {
-				Id = 5,
+				ID = 5,
 				UserName = "michael.fry"
 			});
 

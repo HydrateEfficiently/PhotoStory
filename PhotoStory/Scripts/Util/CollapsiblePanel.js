@@ -67,27 +67,35 @@
 		var self = this;
 		this._whenReady(function () {
 			if (collapse) {
-				self._panelBody.slideUp(function () {
-					self._panelBody.addClass("panel-collapsed");
-				});
+				self._doCollapse();
 			} else {
 				if (!self._hasBeenOpened ) {
 					if (self._beforeFirstExpansionCallback) {
 						self._beforeFirstExpansionCallback(function () {
-							self._panelBody.slideDown(function () {
-								self._panelBody.removeClass("panel-collapsed");
-							});
+							self._doExpand();
 						});
 					}
-					self._hasBeenOpened = true;
 				} else {
-					self._panelBody.slideDown(function () {
-						self._panelBody.removeClass("panel-collapsed");
-					});
+					self._doExpand();
 				}
 			}
 		});
 	};
+
+	CollapsiblePanel.prototype._doCollapse = function () {
+		var self = this;
+		this._panelBody.slideUp(function () {
+			self._panelBody.addClass("panel-collapsed");
+		});
+	};
+
+	CollapsiblePanel.prototype._doExpand = function () {
+		var self = this;
+		this._panelBody.slideDown(function () {
+			self._panelBody.removeClass("panel-collapsed");
+			self._hasBeenOpened = true;
+		});
+	}; 
 
 	CollapsiblePanel.prototype.collapse = function () {
 		this._setCollapsed(true);

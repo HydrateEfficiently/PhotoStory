@@ -9,7 +9,7 @@ namespace PhotoStory.Models.Account {
 
 	public class User {
 
-		public int Id { get; set; }
+		public int ID { get; set; }
 
 		[Required]
 		public string UserName { get; set; }

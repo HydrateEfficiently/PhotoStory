@@ -5,13 +5,18 @@ using System;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
+using AccountApi = PhotoStory.Controllers.Api.AccountController;
 
 namespace PhotoStory.Controllers.Mvc {
 
 	[Authorize]
 	public class AccountController : BaseController {
 
+<<<<<<< HEAD
 		private PhotoStoryContext db = new PhotoStoryContext();
+=======
+		private AccountApi _accountApi = new AccountApi();
+>>>>>>> origin/master
 
 		public ActionResult Index() {
 			return View();
@@ -78,6 +83,24 @@ namespace PhotoStory.Controllers.Mvc {
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		private bool RegisterAndLogin(User user) {
+			var cb = new ControllerBuilder();
+			cb.SetControllerFactory(typeof(AccountApi));
+			cb.GetControllerFactory().CreateController(Request.RequestContext, "PhotoStory.Controllers.Api.AccountController");
+
+			var api = (AccountApi)ControllerBuilder.Current.GetControllerFactory().CreateController(Request.RequestContext, "PhotoStory.Controllers.Api.AccountController");
+				//.CreateController(Request.Reques‌​tContext, controllerName);
+			var registeredUser = ApiHelper.GetApiCallResult<User>(() => api.PostUser(user));
+			if (ModelState.IsValid) {
+				Login(user.UserName, user.Password);
+				return true;
+			}
+			return false;
+		}
+
+>>>>>>> origin/master
 		private bool Login(User_Login user) {
 			if (ModelState.IsValid && WebSecurity.Login(user.UserName, user.Password)) {
 				PopulateCurrentUser();

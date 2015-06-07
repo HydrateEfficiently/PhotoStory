@@ -16,11 +16,18 @@ namespace PhotoStory.Controllers.Mvc {
 
 		private ChapterApi _chapterApi = new ChapterApi();
 
-		public ActionResult CreateNewChapter(Chapter_New newChapter) {
+		public ActionResult CreateNew(Chapter_New newChapter) {
 			Task<IHttpActionResult> task = _chapterApi.PostChapter(newChapter.ToModel());
 			task.Wait();
 			var result = (CreatedAtRouteNegotiatedContentResult<Chapter>)(task.Result);
 			return Json(new Chapter_New(result.Content));
+		}
+
+		private TResult GetApiCallResult<TResult>(Func<Task<IHttpActionResult>> apiFuncCall) {
+			Task<IHttpActionResult> task = apiFuncCall();
+			task.Wait();
+			var result = (CreatedAtRouteNegotiatedContentResult<TResult>)(task.Result);
+			return result.Content;
 		}
 	}
 }

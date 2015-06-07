@@ -9,6 +9,11 @@
 	knockoutPackage.ko = ko;
 	knockoutPackage.komapping = komapping;
 
+	knockoutPackage.toTargetFromJS = function (target, data) {
+		var viewModel = komapping.fromJS(data);
+		$.extend(target, viewModel);
+	};
+
 	ko.bindingHandlers.valueOrPlaceholder = {
 		init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
 			ko.bindingHandlers.value.init(element, valueAccessor, allBindings, viewModel, bindingContext);
