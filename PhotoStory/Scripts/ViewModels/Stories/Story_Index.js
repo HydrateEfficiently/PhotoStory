@@ -8,7 +8,10 @@
 	function create(data) {
 		var viewModel = komapping.fromJS(data);
 		komapping.fromJS(data, viewModel);
-		viewModel.Chapter_New = ko.observable(new Chapter_New());
+		viewModel.Chapter_New = ko.observable(new Chapter_New({
+			StoryID: data.StoryID,
+			UserID: data.UserID
+		}));
 
 
 		ko.applyBindings(viewModel);

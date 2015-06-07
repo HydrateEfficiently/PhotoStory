@@ -3,11 +3,14 @@ using PhotoStory.ViewModels.Account;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
+using AccountApi = PhotoStory.Controllers.Api.AccountController;
 
 namespace PhotoStory.Controllers.Mvc {
 
 	[Authorize]
 	public class AccountController : BaseController {
+
+		private AccountApi _accountApi = new AccountApi();
 
 		public ActionResult Index() {
 			return View();
@@ -63,17 +66,16 @@ namespace PhotoStory.Controllers.Mvc {
 		}
 
 		private bool RegisterAndLogin(User user) {
-			if (ModelState.IsValid) {
-				try {
-					WebSecurity.CreateUserAndAccount(user.UserName, user.Password);
-				} catch (MembershipCreateUserException ex) {
-					ModelState.AddModelError("", ErrorCodeToString(ex.StatusCode));
-				}
+			var cb = new ControllerBuilder();
+			cb.SetControllerFactory(typeof(AccountApi));
+			cb.GetControllerFactory().CreateController(Request.RequestContext, "PhotoStory.Controllers.Api.AccountController");
 
-				if (ModelState.IsValid) {
-					Login(user.UserName, user.Password);
-					return true;
-				}
+			var api = (AccountApi)ControllerBuilder.Current.GetControllerFactory().CreateController(Request.RequestContext, "PhotoStory.Controllers.Api.AccountController");
+				//.CreateController(Request.Reques‌​tContext, controllerName);
+			var registeredUser = ApiHelper.GetApiCallResult<User>(() => api.PostUser(user));
+			if (ModelState.IsValid) {
+				Login(user.UserName, user.Password);
+				return true;
 			}
 			return false;
 		}

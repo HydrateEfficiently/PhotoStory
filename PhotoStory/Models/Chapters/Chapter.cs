@@ -13,6 +13,8 @@ namespace PhotoStory.Models.Chapters {
 
 		public int StoryID { get; set; }
 
+		public int UserID { get; set; }
+
 		public string ChapterName { get; set; }
 
 		public ChapterStatus ChapterStatus { get; set; }
