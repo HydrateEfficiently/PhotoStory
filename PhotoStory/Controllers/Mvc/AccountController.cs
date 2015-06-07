@@ -1,6 +1,7 @@
 ﻿using PhotoStory.Controllers.LocalApi;
 using PhotoStory.Models.Account;
 using PhotoStory.ViewModels.Account;
+using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebMatrix.WebData;
@@ -44,30 +45,14 @@ namespace PhotoStory.Controllers.Mvc {
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Register(User_Register user) {
 			if (ModelState.IsValid) {
-				User initialUserModel = user.ToModel();
-				return await _accountApi.Post(user.ToModel()).ContinueWith(task => {
-					Login(new User_Login(task.Result));
+				User registeredUser = (await Task.WhenAll(_accountApi.Post(user.ToModel())))[0];
+				if (Login(new User_Login(user))) {
 					return RedirectToAction("Index", "Home");
-				});
+				} else {
+					throw new Exception("User was registered but couldn't log in.");
+				}
 			}
-			return await new Task<ActionResult>(() => {
-				return View(user);
-			});
-
-			//	Task task = apiClient.Post(initUserModel);
-			//	task.Wait();
-
-			//	User userModel = null;
-
-			//	if (userModel != null && ModelState.IsValid) {
-			//		if (Login(new User_Login(userModel))) {
-			//			return RedirectToAction("Index", "Home");
-			//		} else {
-			//			throw new Exception("TODO: Handle case where user registers successfully but can't login.");
-			//		}					
-			//	}
-			//}
-			//return View(user);
+			return View(user);
 		}
 
 		[HttpGet]
@@ -86,7 +71,7 @@ namespace PhotoStory.Controllers.Mvc {
 		}
 
 		private bool Login(User_Login user) {
-			if (ModelState.IsValid && WebSecurity.Login(user.Email, user.Password)) {
+			if (ModelState.IsValid && WebSecurity.Login(user.UserName, user.Password)) {
 				PopulateCurrentUser();
 				return true;
 			}
