@@ -13,9 +13,6 @@ namespace PhotoStory.Data.Relational.Entities.Photos {
 
 	public class Photo : Entity<PhotoModel> {
 
-		[ModelMapping("ID")]
-		public int PhotoID { get; set; }
-
 		[ModelMapping]
 		public DateTime UploadTime { get; set; }
 

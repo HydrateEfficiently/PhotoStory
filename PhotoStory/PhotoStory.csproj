@@ -169,20 +169,24 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ApiHelper.cs" />
-    <Compile Include="Controllers\Api\ChapterController.cs" />
-    <Compile Include="Controllers\Api\PhotoController.cs" />
+    <Compile Include="Controllers\LocalApi\AccountApi.cs" />
+    <Compile Include="Controllers\LocalApi\BaseApi.cs" />
+    <Compile Include="Controllers\RemoteApi\BaseApiController.cs" />
+    <Compile Include="Controllers\RemoteApi\ChapterController.cs" />
+    <Compile Include="Controllers\RemoteApi\PhotoController.cs" />
     <Compile Include="Controllers\Mvc\BaseController.cs" />
     <Compile Include="Controllers\Mvc\ChapterController.cs" />
     <Compile Include="Controllers\Mvc\HomeController.cs" />
-    <Compile Include="Controllers\Api\AccountController.cs" />
+    <Compile Include="Controllers\RemoteApi\AccountController.cs" />
     <Compile Include="Controllers\Mvc\AccountController.cs" />
     <Compile Include="Controllers\Mvc\PhotoController.cs" />
     <Compile Include="Controllers\Mvc\StoryController.cs" />
     <Compile Include="Data\Relational\Entities\Chapters\Chapter.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
+    <Compile Include="Models\Account\MembershipCreateStatusString.cs" />
     <Compile Include="Models\Chapters\Chapter.cs" />
     <Compile Include="Models\Chapters\ChapterStatus.cs" />
+    <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Photos\PhotoUpload.cs" />
     <Compile Include="Util\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Util\SubModel.cs" />
@@ -203,6 +207,7 @@
     <Compile Include="Models\Stories\Story.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\User_Login.cs" />
+    <Compile Include="ViewModels\Account\User_Register.cs" />
     <Compile Include="ViewModels\Chapters\Chapter_New.cs" />
     <Compile Include="ViewModels\Photos\Photo_Uploaded.cs" />
     <Compile Include="ViewModels\Stories\Story_Index.cs" />
@@ -254,6 +259,68 @@
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\Packages\KnockoutPackage.js" />
+    <Content Include="Scripts\plupload\i18n\ar.js" />
+    <Content Include="Scripts\plupload\i18n\bs.js" />
+    <Content Include="Scripts\plupload\i18n\ca.js" />
+    <Content Include="Scripts\plupload\i18n\cs.js" />
+    <Content Include="Scripts\plupload\i18n\cy.js" />
+    <Content Include="Scripts\plupload\i18n\da.js" />
+    <Content Include="Scripts\plupload\i18n\de.js" />
+    <Content Include="Scripts\plupload\i18n\el.js" />
+    <Content Include="Scripts\plupload\i18n\en.js" />
+    <Content Include="Scripts\plupload\i18n\es.js" />
+    <Content Include="Scripts\plupload\i18n\et.js" />
+    <Content Include="Scripts\plupload\i18n\fa.js" />
+    <Content Include="Scripts\plupload\i18n\fi.js" />
+    <Content Include="Scripts\plupload\i18n\fr.js" />
+    <Content Include="Scripts\plupload\i18n\he.js" />
+    <Content Include="Scripts\plupload\i18n\hr.js" />
+    <Content Include="Scripts\plupload\i18n\hu.js" />
+    <Content Include="Scripts\plupload\i18n\hy.js" />
+    <Content Include="Scripts\plupload\i18n\id.js" />
+    <Content Include="Scripts\plupload\i18n\it.js" />
+    <Content Include="Scripts\plupload\i18n\ja.js" />
+    <Content Include="Scripts\plupload\i18n\ka.js" />
+    <Content Include="Scripts\plupload\i18n\kk.js" />
+    <Content Include="Scripts\plupload\i18n\ko.js" />
+    <Content Include="Scripts\plupload\i18n\lt.js" />
+    <Content Include="Scripts\plupload\i18n\lv.js" />
+    <Content Include="Scripts\plupload\i18n\nl.js" />
+    <Content Include="Scripts\plupload\i18n\pl.js" />
+    <Content Include="Scripts\plupload\i18n\pt_BR.js" />
+    <Content Include="Scripts\plupload\i18n\ro.js" />
+    <Content Include="Scripts\plupload\i18n\ru.js" />
+    <Content Include="Scripts\plupload\i18n\sk.js" />
+    <Content Include="Scripts\plupload\i18n\sr.js" />
+    <Content Include="Scripts\plupload\i18n\sv.js" />
+    <Content Include="Scripts\plupload\i18n\th_TH.js" />
+    <Content Include="Scripts\plupload\i18n\tr.js" />
+    <Content Include="Scripts\plupload\i18n\uk_UA.js" />
+    <Content Include="Scripts\plupload\i18n\zh_CN.js" />
+    <Content Include="Scripts\plupload\i18n\zh_TW.js" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\css\jquery.plupload.queue.css" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\backgrounds.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\buttons-disabled.png" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\buttons.png" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\delete.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\done.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\error.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\throbber.gif" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\img\transp50.png" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\jquery.plupload.queue.js" />
+    <Content Include="Scripts\plupload\jquery.plupload.queue\jquery.plupload.queue.min.js" />
+    <Content Include="Scripts\plupload\jquery.ui.plupload\css\jquery.ui.plupload.css" />
+    <Content Include="Scripts\plupload\jquery.ui.plupload\img\loading.gif" />
+    <Content Include="Scripts\plupload\jquery.ui.plupload\img\plupload.png" />
+    <Content Include="Scripts\plupload\jquery.ui.plupload\jquery.ui.plupload.js" />
+    <Content Include="Scripts\plupload\jquery.ui.plupload\jquery.ui.plupload.min.js" />
+    <Content Include="Scripts\plupload\moxie.js" />
+    <Content Include="Scripts\plupload\moxie.min.js" />
+    <Content Include="Scripts\plupload\Moxie.swf" />
+    <Content Include="Scripts\plupload\Moxie.xap" />
+    <Content Include="Scripts\plupload\plupload.dev.js" />
+    <Content Include="Scripts\plupload\plupload.full.min.js" />
+    <Content Include="Scripts\plupload\plupload.min.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\Util\CollapsiblePanel.js" />
@@ -294,13 +361,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Account\Users.cshtml" />
+    <Content Include="Views\Accounts\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Accounts\User_Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Accounts\User_Register.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

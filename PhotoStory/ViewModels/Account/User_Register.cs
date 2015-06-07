@@ -19,11 +19,5 @@ namespace PhotoStory.ViewModels.Account {
 		public User_Register() { }
 
 		public User_Register(User model) : base(model) { }
-
-		protected override User ToModel() {
-			var model = base.ToModel();
-			model.UserName = Email;
-			return model;
-		}
 	}
 }

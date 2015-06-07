@@ -1,14 +1,15 @@
 ﻿using PhotoStory.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhotoStory.Data.Relational.Entities {
 
 	public abstract class Entity<TModel> : SubModel<TModel> {
+
+		[ModelMapping]
+		[Key]
+		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+		public int ID { get; set; }
 
 		public Entity() { }
 

@@ -9,11 +9,6 @@ namespace PhotoStory.Data.Relational.Entities.Account {
 
 	public class User : Entity<UserModel> {
 
-		[Key]
-		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-		[ModelMapping("ID")]
-		public int UserID { get; set; }
-
 		[ModelMapping]
 		public string UserName { get; set; }
 

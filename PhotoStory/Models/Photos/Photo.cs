@@ -10,11 +10,9 @@ using System.Web;
 
 namespace PhotoStory.Models.Photos {
 
-	public class Photo : IDisposable {
+	public class Photo : Model {
 
 		private Stream _stream;
-
-		public int ID { get; set; }
 
 		public int UserID { get; set; }
 

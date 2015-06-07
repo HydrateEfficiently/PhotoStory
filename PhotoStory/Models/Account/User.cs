@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStory.Models.Account {
 
-	public class User {
-
-		public int ID { get; set; }
+	public class User : Model {
 
 		[Required]
 		public string UserName { get; set; }

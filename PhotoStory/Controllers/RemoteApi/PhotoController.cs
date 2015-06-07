@@ -23,7 +23,7 @@ namespace PhotoStory.Controllers.Api {
 			//db.Users.Add(userEntity);
 			//await db.SaveChangesAsync();
 
-			return CreatedAtRoute("DefaultApi", new { id = photoEntity.PhotoID }, photoEntity.ToModel());
+			return CreatedAtRoute("DefaultApi", new { id = photoEntity.ID }, photoEntity.ToModel());
 		}
 
 	}

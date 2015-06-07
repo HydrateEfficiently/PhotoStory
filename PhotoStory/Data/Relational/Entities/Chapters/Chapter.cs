@@ -11,9 +11,6 @@ namespace PhotoStory.Data.Relational.Entities.Chapters {
 
 	public class Chapter : Entity<ChapterModel> {
 
-		[ModelMapping("ID")]
-		public int ChapterID { get; set; }
-
 		[ModelMapping]
 		public int StoryID { get; set; }
 

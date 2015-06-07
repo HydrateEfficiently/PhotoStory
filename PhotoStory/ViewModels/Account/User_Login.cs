@@ -19,5 +19,7 @@ namespace PhotoStory.ViewModels.Account {
 		public User_Login() { }
 
 		public User_Login(User model) : base(model) { }
+
+		public User_Login(User_Register userRegister) : this(userRegister.ToModel()) { }
 	}
 }

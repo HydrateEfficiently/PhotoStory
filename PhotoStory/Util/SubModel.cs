@@ -13,7 +13,7 @@ namespace PhotoStory.Util {
 			ModelMapper.MapFromModel<TModel>(this, model);
 		}
 
-		public virtual TModel ToModel() {
+		public TModel ToModel() {
 			return ModelMapper.MapToModel<TModel>(this);
 		}
 	}

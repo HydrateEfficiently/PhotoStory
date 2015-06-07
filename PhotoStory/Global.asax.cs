@@ -34,7 +34,7 @@ namespace PhotoStory {
 					}
 				}
 
-				WebSecurity.InitializeDatabaseConnection("DefaultConnection", "User", "UserId", "UserName", autoCreateTables: true);
+				WebSecurity.InitializeDatabaseConnection("DefaultConnection", "User", "ID", "Email", autoCreateTables: true);
 			} catch (Exception ex) {
 				throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588", ex);
 			}

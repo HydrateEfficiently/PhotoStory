@@ -1,22 +1,16 @@
-﻿using PhotoStory.Data.Relational;
+﻿using PhotoStory.Controllers.LocalApi;
 using PhotoStory.Models.Account;
 using PhotoStory.ViewModels.Account;
-using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Web.Security;
 using WebMatrix.WebData;
-using AccountApi = PhotoStory.Controllers.Api.AccountController;
 
 namespace PhotoStory.Controllers.Mvc {
 
 	[Authorize]
 	public class AccountController : BaseController {
 
-<<<<<<< HEAD
-		private PhotoStoryContext db = new PhotoStoryContext();
-=======
 		private AccountApi _accountApi = new AccountApi();
->>>>>>> origin/master
 
 		public ActionResult Index() {
 			return View();
@@ -25,7 +19,7 @@ namespace PhotoStory.Controllers.Mvc {
 		[AllowAnonymous]
 		public ActionResult Login(string returnUrl) {
 			ViewBag.ReturnUrl = returnUrl;
-			return View();
+			return View("~/Views/Accounts/User_Login.cshtml");
 		}
 
 		[HttpPost]
@@ -42,30 +36,38 @@ namespace PhotoStory.Controllers.Mvc {
 
 		[AllowAnonymous]
 		public ActionResult Register() {
-			return View();
+			return View("~/Views/Accounts/User_Register.cshtml");
 		}
 
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
-		public ActionResult Register(User_Register user) {
+		public async Task<ActionResult> Register(User_Register user) {
 			if (ModelState.IsValid) {
-				User userModel = user.ToModel();
-				try {
-					WebSecurity.CreateUserAndAccount(userModel.UserName, userModel.Password);
-				} catch (MembershipCreateUserException ex) {
-					ModelState.AddModelError("", MembershipCreateStatusString.Get(ex.StatusCode));
-				}
-
-				if (ModelState.IsValid) {
-					if (Login(new User_Login(userModel))) {
-						return RedirectToAction("Index", "Home");
-					} else {
-						throw new Exception("TODO: Handle case where user registers successfully but can't login.")
-					}					
-				}
+				User initialUserModel = user.ToModel();
+				return await _accountApi.Post(user.ToModel()).ContinueWith(task => {
+					Login(new User_Login(task.Result));
+					return RedirectToAction("Index", "Home");
+				});
 			}
-			return View(user);
+			return await new Task<ActionResult>(() => {
+				return View(user);
+			});
+
+			//	Task task = apiClient.Post(initUserModel);
+			//	task.Wait();
+
+			//	User userModel = null;
+
+			//	if (userModel != null && ModelState.IsValid) {
+			//		if (Login(new User_Login(userModel))) {
+			//			return RedirectToAction("Index", "Home");
+			//		} else {
+			//			throw new Exception("TODO: Handle case where user registers successfully but can't login.");
+			//		}					
+			//	}
+			//}
+			//return View(user);
 		}
 
 		[HttpGet]
@@ -83,30 +85,19 @@ namespace PhotoStory.Controllers.Mvc {
 			}
 		}
 
-<<<<<<< HEAD
-=======
-		private bool RegisterAndLogin(User user) {
-			var cb = new ControllerBuilder();
-			cb.SetControllerFactory(typeof(AccountApi));
-			cb.GetControllerFactory().CreateController(Request.RequestContext, "PhotoStory.Controllers.Api.AccountController");
-
-			var api = (AccountApi)ControllerBuilder.Current.GetControllerFactory().CreateController(Request.RequestContext, "PhotoStory.Controllers.Api.AccountController");
-				//.CreateController(Request.Reques‌​tContext, controllerName);
-			var registeredUser = ApiHelper.GetApiCallResult<User>(() => api.PostUser(user));
-			if (ModelState.IsValid) {
-				Login(user.UserName, user.Password);
+		private bool Login(User_Login user) {
+			if (ModelState.IsValid && WebSecurity.Login(user.Email, user.Password)) {
+				PopulateCurrentUser();
 				return true;
 			}
 			return false;
 		}
 
->>>>>>> origin/master
-		private bool Login(User_Login user) {
-			if (ModelState.IsValid && WebSecurity.Login(user.UserName, user.Password)) {
-				PopulateCurrentUser();
-				return true;
+		protected override void Dispose(bool disposing) {
+			if (disposing) {
+				_accountApi.Dispose();
 			}
-			return false;
+			base.Dispose(disposing);
 		}
 	}
 }

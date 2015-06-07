@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStory.Models.Chapters {
 
-	public class Chapter {
-
-		public int ID { get; set; }
+	public class Chapter : Model {
 
 		public int StoryID { get; set; }
 
