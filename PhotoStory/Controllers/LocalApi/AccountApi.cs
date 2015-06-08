@@ -12,9 +12,15 @@ namespace PhotoStory.Controllers.LocalApi {
 
 	public class AccountApi : BaseApi<UserModel, UserEntity> {
 
-		protected override DbSet<UserEntity> GetDbSetForEntity(PhotoStoryContext context) {
-			return context.Users;
+		protected override string WorkingDbSetName {
+			get {
+				return "Users";
+			}
 		}
+
+		public AccountApi() { }
+
+		public AccountApi(PhotoStoryContext context) : base(context) { }
 
 		public override async Task<UserModel> Post(UserModel user) {
 			return await base.Post(

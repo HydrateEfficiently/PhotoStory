@@ -171,6 +171,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\LocalApi\AccountApi.cs" />
     <Compile Include="Controllers\LocalApi\BaseApi.cs" />
+    <Compile Include="Controllers\LocalApi\StoryApi.cs" />
     <Compile Include="Controllers\RemoteApi\BaseApiController.cs" />
     <Compile Include="Controllers\RemoteApi\ChapterController.cs" />
     <Compile Include="Controllers\RemoteApi\PhotoController.cs" />
@@ -183,12 +184,14 @@
     <Compile Include="Controllers\Mvc\StoryController.cs" />
     <Compile Include="Data\Relational\Entities\Chapters\Chapter.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
+    <Compile Include="Data\Relational\Entities\Stories\Story.cs" />
     <Compile Include="Models\Account\MembershipCreateStatusString.cs" />
     <Compile Include="Models\Chapters\Chapter.cs" />
     <Compile Include="Models\Chapters\ChapterStatus.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Photos\PhotoUpload.cs" />
     <Compile Include="Util\Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Util\Extensions\TaskExtensions.cs" />
     <Compile Include="Util\SubModel.cs" />
     <Compile Include="Data\Static\Photo\LocalRepository.cs" />
     <Compile Include="Data\Static\Photo\Repository.cs" />

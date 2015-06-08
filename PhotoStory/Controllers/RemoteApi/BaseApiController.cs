@@ -32,11 +32,11 @@ namespace PhotoStory.Controllers.Api {
 		}
 
 		public async Task<IHttpActionResult> Get(int id) {
-			TEntityType entity = await _api.Get(id);
-			if (entity == null) {
+			TModelType model = await _api.Get(id);
+			if (model == null) {
 				return NotFound();
 			}
-			return Ok(entity.ToModel());
+			return Ok(model);
 		}
 
 		protected async Task<IHttpActionResult> Put(int id, TModelType model) {

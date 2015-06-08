@@ -15,16 +15,36 @@ namespace PhotoStory.Controllers.LocalApi {
 		where TModelType : Model
 		where TEntityType : Entity<TModelType> {
 
-		private PhotoStoryContext _db = new PhotoStoryContext();
+		private PhotoStoryContext _context;
+		private DbSet<TEntityType> _workingDbSet;
 
-		protected abstract DbSet<TEntityType> GetDbSetForEntity(PhotoStoryContext context);
-
-		public virtual IEnumerable<TModelType> GetAll() {
-			return GetDbSetForEntity(_db).ToList().ConvertAll(e => e.ToModel());
+		protected PhotoStoryContext Context {
+			get {
+				return _context;
+			}
 		}
 
-		public virtual async Task<TEntityType> Get(int id) {
-			return await GetDbSetForEntity(_db).FindAsync(id);
+		protected DbSet<TEntityType> WorkingDbSet {
+			get {
+				return _workingDbSet;
+			}
+		}
+
+		protected abstract string WorkingDbSetName { get; }
+
+		protected BaseApi() : this(new PhotoStoryContext()) { }
+
+		protected BaseApi(PhotoStoryContext context) {
+			_context = context;
+			_workingDbSet = (DbSet<TEntityType>)typeof(PhotoStoryContext).GetProperty(WorkingDbSetName).GetValue(_context);
+		}
+
+		public virtual IEnumerable<TModelType> GetAll() {
+			return _workingDbSet.ToList().ConvertAll(e => e.ToModel());
+		}
+
+		public virtual async Task<TModelType> Get(int id) {
+			return (await _workingDbSet.FindAsync(id)).ToModel();
 		}
 
 		public virtual async Task Put(int id, TModelType model) {
@@ -34,9 +54,9 @@ namespace PhotoStory.Controllers.LocalApi {
 			}
 
 			TEntityType entity = GetEntity(model);
-			_db.Entry(entity).State = EntityState.Modified;
+			_context.Entry(entity).State = EntityState.Modified;
 			try {
-				await _db.SaveChangesAsync();
+				await _context.SaveChangesAsync();
 			} catch (DbUpdateConcurrencyException ex) {
 				if (!EntityExists(id)) {
 					throw new Exception("Entity not found", ex);
@@ -47,7 +67,7 @@ namespace PhotoStory.Controllers.LocalApi {
 		}
 
 		public virtual async Task<TModelType> Post(TModelType model) {
-			return await Post(model, null);
+			return await Post(await PopulateForeignKeys(model), null);
 		}
 
 		protected async Task<TModelType> Post(
@@ -59,8 +79,8 @@ namespace PhotoStory.Controllers.LocalApi {
 			TEntityType entity = null;
 			if (customEntityFactory == null) {
 				entity = GetEntity(model);
-				GetDbSetForEntity(_db).Add(entity);
-				await _db.SaveChangesAsync();
+				_workingDbSet.Add(entity);
+				await _context.SaveChangesAsync();
 			} else {
 				entity = await customEntityFactory();
 				EnsureModelValidated(model);
@@ -70,19 +90,19 @@ namespace PhotoStory.Controllers.LocalApi {
 				throw new Exception("Unknown error: Entity could not be created");
 			}
 
-			return entity.ToModel();
+			return await PopulateForeignKeys(entity.ToModel());
 		}
 
 		public virtual async Task<TModelType> Delete(int id) {
-			TEntityType entity = await GetDbSetForEntity(_db).FindAsync(id);
+			TEntityType entity = await _workingDbSet.FindAsync(id);
 			if (entity == null) {
 				throw new Exception("Entity not found");
 			}
 
-			GetDbSetForEntity(_db).Remove(entity);
-			await _db.SaveChangesAsync();
+			_workingDbSet.Remove(entity);
+			await _context.SaveChangesAsync();
 
-			return entity.ToModel();
+			return await PopulateForeignKeys(entity.ToModel());
 		}
 
 		private TEntityType GetEntity(TModelType model) {
@@ -92,7 +112,7 @@ namespace PhotoStory.Controllers.LocalApi {
 		}
 
 		private bool EntityExists(int id) {
-			return GetDbSetForEntity(_db).Count(e => e.ID == id) > 0;
+			return _workingDbSet.Count(e => e.ID == id) > 0;
 		}
 
 		private void EnsureModelValidated(TModelType model) {
@@ -103,7 +123,11 @@ namespace PhotoStory.Controllers.LocalApi {
 		}
 
 		public void Dispose() {
-			_db.Dispose();
+			_context.Dispose();
+		}
+
+		protected virtual async Task<TModelType> PopulateForeignKeys(TModelType model) {
+			return await new Task<TModelType>(() => model); // Can we optimise this to not use Task?
 		}
 	}
 }

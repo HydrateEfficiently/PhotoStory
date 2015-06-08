@@ -14,10 +14,7 @@ namespace PhotoStory.ViewModels.Stories {
 		[ModelMapping]
 		public User User { get; set; }
 
-		public Story_Index(User user) : this(new Story(user)) { }
-
-		public Story_Index(Story model) : base(model) {
-
+		public Story_Index(Story story) : base(story) {
 		}
 
 	}

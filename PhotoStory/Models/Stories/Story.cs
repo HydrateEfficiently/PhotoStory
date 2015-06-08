@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace PhotoStory.Models.Stories {
 
-	public class Story {
+	public class Story : Model {
+
+		public int UserID { get; set; }
 
 		public User User { get; set; }
 
 		public IEnumerable<Chapter> Chapters { get; set; }
 
-		public Story(User user) {
-			User = user;
-		}
+		public Story() { }
 
 	}
 }
