@@ -26,7 +26,7 @@ namespace PhotoStory.Controllers.Mvc {
 		public async Task<ActionResult> SaveDraft(Chapter_SaveDraft chapter) {
 			Chapter initChapterModel = chapter.ToModel();
 			initChapterModel.SaveDraft();
-			await Task.WhenAll(_chapterApi.Put(initChapterModel.ID, initChapterModel));
+			await Extensions.TaskExtensions.WhenOne(_chapterApi.Put(initChapterModel.ID, initChapterModel));
 			return new HttpStatusCodeResult(HttpStatusCode.OK);
 		}
 

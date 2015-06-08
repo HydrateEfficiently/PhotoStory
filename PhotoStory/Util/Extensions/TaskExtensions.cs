@@ -8,6 +8,10 @@ namespace PhotoStory.Util.Extensions {
 
 	public static class TaskExtensions {
 
+		public async static Task WhenOne(Task task) {
+			await Task.WhenAll(task);
+		}
+
 		public async static Task<T> WhenOne<T>(Task<T> task) {
 			return (await Task.WhenAll(task))[0];
 		}
