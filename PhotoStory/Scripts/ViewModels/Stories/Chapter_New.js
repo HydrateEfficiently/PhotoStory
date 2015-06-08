@@ -31,20 +31,28 @@
 
 		this.CollapsiblePanel = new CollapsiblePanel(this.CollapsiblePanelElement, {
 			beforeFirstExpansionCallback: function (expansionAction) {
-				$.post("/Chapter/CreateNew", komapping.toJS(self))
-					.done(function (data) {
-						komapping.fromJS(data, self);
-						expansionAction();
-					})
-					.error(function () {
-						alert("Error creating new chapter");
-					});
+				if (self.ID() === 0) {
+					self.createNew(expansionAction);
+				} else {
+					expansionAction();
+				}
 			}
 		});
 	}
 
-	Chapter_New.prototype.saveDraft = function () {
+	Chapter_New.prototype.createNew = function (expansionAction) {
 		var self = this;
+		$.post("/Chapter/CreateNew", komapping.toJS(self))
+			.done(function (data) {
+				komapping.fromJS(data, self);
+				expansionAction();
+			})
+			.error(function () {
+				alert("Error creating new chapter");
+			});
+	};
+
+	Chapter_New.prototype.saveDraft = function () {
 		$.post("/Chapter/SaveDraft", komapping.toJS(this))
 			.done(function () {
 				alert("Draft saved!");

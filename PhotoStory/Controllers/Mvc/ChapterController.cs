@@ -1,5 +1,6 @@
 ﻿using PhotoStory.Controllers.LocalApi;
 using PhotoStory.Models.Chapters;
+using PhotoStory.Models.Stories;
 using PhotoStory.ViewModels.Chapters;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace PhotoStory.Controllers.Mvc {
 	public class ChapterController : BaseController {
 
 		private ChapterApi _chapterApi = new ChapterApi();
+		private StoryApi _storyApi = new StoryApi();
 
 		public async Task<ActionResult> CreateNew(Chapter_New chapter) {
 			Chapter chapterModel = await Extensions.TaskExtensions.WhenOne(_chapterApi.Post(chapter.ToModel()));
@@ -26,8 +28,9 @@ namespace PhotoStory.Controllers.Mvc {
 		public async Task<ActionResult> SaveDraft(Chapter_Draft chapter) {
 			Chapter initChapterModel = chapter.ToModel();
 			initChapterModel.SaveDraft();
-			await Extensions.TaskExtensions.WhenOne(_chapterApi.Put(initChapterModel.ID, initChapterModel));
-			return new HttpStatusCodeResult(HttpStatusCode.OK);
+			Chapter savedChapterModel = await Extensions.TaskExtensions.WhenOne(_chapterApi.Post(initChapterModel));
+			Story story = await Extensions.TaskExtensions.WhenOne(_storyApi.PutChapterDraft(savedChapterModel));
+			return Json(new Chapter_Draft(savedChapterModel));
 		}
 
 		protected override void Dispose(bool disposing) {

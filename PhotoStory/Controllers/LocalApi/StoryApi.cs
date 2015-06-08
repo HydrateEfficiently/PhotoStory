@@ -1,5 +1,6 @@
 ﻿using PhotoStory.Data.Relational;
 using PhotoStory.Models.Chapters;
+using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using StoryEntity = PhotoStory.Data.Relational.Entities.Stories.Story;
@@ -44,11 +45,35 @@ namespace PhotoStory.Controllers.LocalApi {
 			return await PopulateForeignKeys(model);
 		}
 
+		public virtual async Task<StoryModel> PutChapterDraft(Chapter chapter) {
+			Chapter savedDraftChapter = await _chapterApi.Get(chapter.ID);
+			if (savedDraftChapter == null) {
+				throw new Exception(string.Format("Chapter of ID {0} not found.", chapter.ID));
+			}
+
+			if (savedDraftChapter.StoryID != chapter.StoryID || savedDraftChapter.UserID != chapter.UserID) {
+				throw new Exception("Inconsistent story and user information in chapter.");
+			}
+
+			StoryModel story = await Get(chapter.StoryID);
+			if (story == null) {
+				throw new Exception(string.Format("Story of ID {0} not found.", chapter.StoryID));
+			}
+
+			if (story.UserID != chapter.UserID) {
+				throw new Exception(string.Format("UserID on story, {0}, did not match UserID on chapter, {1}", story.UserID, chapter.UserID));
+			}
+
+			story.ChapterDraftID = chapter.ID;
+			await Put(story.ID, story);
+			return await Get(story.ID);
+		}
+
 		private async Task<StoryModel> PopulateForeignKeys(StoryModel model) {
 			// TODO: "yield return" version for populating multiple models.
 			model.User = await _accountApi.Get(model.UserID);
 			model.ChapterDraft = model.ChapterDraftID < 1 ?
-				new Chapter() :
+				new Chapter() { StoryID = model.ID, UserID = model.UserID } :
 				model.ChapterDraft = await _chapterApi.Get(model.ChapterDraftID);
 			return model;
 		}
