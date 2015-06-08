@@ -19,7 +19,7 @@ namespace PhotoStory.Models.Chapters {
 
 		public DateTime StartTime { get; set; }
 
-		public IEnumerable<Photo> Photos { get; set; }
+		public IEnumerable<int> PhotoIDs { get; set; }
 
 		public Chapter() {
 			ChapterStatus = ChapterStatus.Started;

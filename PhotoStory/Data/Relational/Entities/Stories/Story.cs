@@ -15,8 +15,6 @@ namespace PhotoStory.Data.Relational.Entities.Stories {
 		[ModelMapping]
 		public int UserID { get; set; }
 
-		public virtual User User { get; set; } 
-
 		public Story() { }
 
 		public Story(StoryModel model) : base(model) { }

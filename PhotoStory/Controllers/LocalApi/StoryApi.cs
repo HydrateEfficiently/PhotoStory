@@ -1,9 +1,5 @@
 ﻿using PhotoStory.Data.Relational;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using StoryEntity = PhotoStory.Data.Relational.Entities.Stories.Story;
 using StoryModel = PhotoStory.Models.Stories.Story;
@@ -28,21 +24,23 @@ namespace PhotoStory.Controllers.LocalApi {
 			_accountApi = new AccountApi(Context);
 		}
 
-		protected override async Task<StoryModel> PopulateForeignKeys(StoryModel model) {
-			// TODO: "yield return" version for populating multiple models.
-			model.User = await _accountApi.Get(model.UserID);
-			return model;
-		}
-
 		public virtual async Task<StoryModel> GetByUser(int userId) {
 			StoryEntity entity = await WorkingDbSet.FirstOrDefaultAsync(x => x.UserID == userId);
+			StoryModel model = null;
 			if (entity == null) {
-				return await Post(new StoryModel() {
+				model = await Post(new StoryModel() {
 					UserID = userId
 				});
 			} else {
-				return await PopulateForeignKeys(entity.ToModel());
+				model = entity.ToModel();
 			}
+			return await PopulateForeignKeys(model);
+		}
+
+		private async Task<StoryModel> PopulateForeignKeys(StoryModel model) {
+			// TODO: "yield return" version for populating multiple models.
+			model.User = await _accountApi.Get(model.UserID);
+			return model;
 		}
 	}
 }

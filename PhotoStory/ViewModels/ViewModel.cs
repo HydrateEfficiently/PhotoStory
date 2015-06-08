@@ -1,4 +1,5 @@
-﻿using PhotoStory.Util;
+﻿using PhotoStory.Models.Account;
+using PhotoStory.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;

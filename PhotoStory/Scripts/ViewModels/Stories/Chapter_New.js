@@ -10,7 +10,7 @@
 		var self = this;
 		this._isEnabled = true;
 
-		KnockoutPackage.toTargetFromJS(this, data);
+		KnockoutPackage.callFromJS(this, data);
 		komapping.fromJS(data, this);
 
 		this.Title = ko.observable();
@@ -33,16 +33,11 @@
 
 		this.CollapsiblePanel = new CollapsiblePanel(this.CollapsiblePanelElement, {
 			beforeFirstExpansionCallback: function (expansionAction) {
-				$.post("/Chapter/CreateNew", {
-					data: {
-						StoryID: self.StoryID,
-						UserID: self.UserID
-					}
-				})
-				.done(expansionAction)
-				.error(function () {
-					alert("Error creating new chapter");
-				});
+				$.post("/Chapter/CreateNew", { StoryID: self.StoryID(), UserID: self.UserID() })
+					.done(expansionAction)
+					.error(function () {
+						alert("Error creating new chapter");
+					});
 			}
 		});
 	}

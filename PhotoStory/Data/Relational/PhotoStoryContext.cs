@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PhotoStory.Data.Relational.Entities.Stories;
+using PhotoStory.Data.Relational.Entities.Chapters;
 
 namespace PhotoStory.Data.Relational {
 
@@ -20,6 +21,8 @@ namespace PhotoStory.Data.Relational {
 		public DbSet<Photo> Photos { get; set; }
 
 		public DbSet<Story> Stories { get; set; }
+
+		public DbSet<Chapter> Chapters { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder) {
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

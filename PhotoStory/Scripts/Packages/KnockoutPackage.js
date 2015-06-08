@@ -9,7 +9,7 @@
 	knockoutPackage.ko = ko;
 	knockoutPackage.komapping = komapping;
 
-	knockoutPackage.toTargetFromJS = function (target, data) {
+	knockoutPackage.callFromJS = function (target, data) {
 		var viewModel = komapping.fromJS(data);
 		$.extend(target, viewModel);
 	};

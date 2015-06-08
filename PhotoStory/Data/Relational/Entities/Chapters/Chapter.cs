@@ -15,6 +15,9 @@ namespace PhotoStory.Data.Relational.Entities.Chapters {
 		public int StoryID { get; set; }
 
 		[ModelMapping]
+		public int UserID { get; set; }
+
+		[ModelMapping]
 		public string ChapterName { get; set; }
 
 		[ModelMapping]
@@ -24,7 +27,7 @@ namespace PhotoStory.Data.Relational.Entities.Chapters {
 		public DateTime StartTime { get; set; }
 
 		[ModelMapping]
-		public IEnumerable<PhotoStory.Data.Relational.Entities.Photos.Photo> Photos { get; set; } // Should I use entity or model?
+		public IEnumerable<int> PhotoIDs { get; set; }
 
 		public Chapter() { }
 

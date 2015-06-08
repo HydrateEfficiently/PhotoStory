@@ -40,8 +40,17 @@
 		isReady = true;
 	}
 
+	function initialiseView(viewModelConstructor, data) {
+		whenReady(function () {
+			require(["Packages/KnockoutPackage"], function (KnockoutPackage) {
+				KnockoutPackage.ko.applyBindings(new viewModelConstructor(data));
+			});
+		});
+	}
+
 	return {
 		start: start,
-		whenReady: whenReady
+		whenReady: whenReady,
+		initialiseView: initialiseView
 	};
 });

@@ -5,20 +5,17 @@
 		komapping = KnockoutPackage.komapping,
 		Chapter_New = require("ViewModels/Stories/Chapter_New");
 
-	function create(data) {
-		var viewModel = komapping.fromJS(data);
-		komapping.fromJS(data, viewModel);
-		viewModel.Chapter_New = ko.observable(new Chapter_New({
-			StoryID: data.StoryID,
-			UserID: data.UserID
-		}));
+	function Story_Index(data) {
+		var self = this;
 
-
-		ko.applyBindings(viewModel);
-		return viewModel;
+		KnockoutPackage.callFromJS(this, data);
+		komapping.fromJS(data, this);
+		
+		this.Chapter_New = new Chapter_New({
+			StoryID: data.ID,
+			UserID: data.User.ID
+		});
 	}
 
-	return {
-		create: create
-	};
+	return Story_Index;
 });

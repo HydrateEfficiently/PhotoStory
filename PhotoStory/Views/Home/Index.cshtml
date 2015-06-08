@@ -2,7 +2,7 @@
 	ViewBag.Title = "PhotoStory";
 }
 
-@if (WebSecurity.IsAuthenticated) {
+@if (WebSecurity.IsAuthenticated) { // This is not right! :)
 	@Html.Partial("~/Views/Home/_Index.User.cshtml");
 } else {
 	@Html.Partial("~/Views/Home/_Index.Anonymous.cshtml");

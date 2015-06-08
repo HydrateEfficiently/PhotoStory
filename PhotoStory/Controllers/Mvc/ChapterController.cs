@@ -1,4 +1,5 @@
-﻿using PhotoStory.Models.Chapters;
+﻿using PhotoStory.Controllers.LocalApi;
+using PhotoStory.Models.Chapters;
 using PhotoStory.ViewModels.Chapters;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
-using ChapterApi = PhotoStory.Controllers.Api.ChapterController;
+using Extensions = PhotoStory.Util.Extensions;
 
 namespace PhotoStory.Controllers.Mvc {
 
@@ -16,18 +17,16 @@ namespace PhotoStory.Controllers.Mvc {
 
 		private ChapterApi _chapterApi = new ChapterApi();
 
-		public ActionResult CreateNew(Chapter_New newChapter) {
-			Task<IHttpActionResult> task = _chapterApi.PostChapter(newChapter.ToModel());
-			task.Wait();
-			var result = (CreatedAtRouteNegotiatedContentResult<Chapter>)(task.Result);
-			return Json(new Chapter_New(result.Content));
+		public async Task<ActionResult> CreateNew(Chapter_New chapter) {
+			Chapter chapterModel = await Extensions.TaskExtensions.WhenOne(_chapterApi.Post(chapter.ToModel()));
+			return Json(new Chapter_New(chapterModel));
 		}
 
-		private TResult GetApiCallResult<TResult>(Func<Task<IHttpActionResult>> apiFuncCall) {
-			Task<IHttpActionResult> task = apiFuncCall();
-			task.Wait();
-			var result = (CreatedAtRouteNegotiatedContentResult<TResult>)(task.Result);
-			return result.Content;
+		protected override void Dispose(bool disposing) {
+			if (disposing) {
+				_chapterApi.Dispose();
+			}
+			base.Dispose(disposing);
 		}
 	}
 }

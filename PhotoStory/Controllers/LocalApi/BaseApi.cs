@@ -67,7 +67,7 @@ namespace PhotoStory.Controllers.LocalApi {
 		}
 
 		public virtual async Task<TModelType> Post(TModelType model) {
-			return await Post(await PopulateForeignKeys(model), null);
+			return await Post(model, null);
 		}
 
 		protected async Task<TModelType> Post(
@@ -90,7 +90,7 @@ namespace PhotoStory.Controllers.LocalApi {
 				throw new Exception("Unknown error: Entity could not be created");
 			}
 
-			return await PopulateForeignKeys(entity.ToModel());
+			return entity.ToModel();
 		}
 
 		public virtual async Task<TModelType> Delete(int id) {
@@ -102,7 +102,7 @@ namespace PhotoStory.Controllers.LocalApi {
 			_workingDbSet.Remove(entity);
 			await _context.SaveChangesAsync();
 
-			return await PopulateForeignKeys(entity.ToModel());
+			return entity.ToModel();
 		}
 
 		private TEntityType GetEntity(TModelType model) {
@@ -124,10 +124,6 @@ namespace PhotoStory.Controllers.LocalApi {
 
 		public void Dispose() {
 			_context.Dispose();
-		}
-
-		protected virtual async Task<TModelType> PopulateForeignKeys(TModelType model) {
-			return await new Task<TModelType>(() => model); // Can we optimise this to not use Task?
 		}
 	}
 }
