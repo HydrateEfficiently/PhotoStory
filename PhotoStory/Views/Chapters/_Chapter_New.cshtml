@@ -3,10 +3,10 @@
 }
 
 
-	<h3 class="chapter-title">Chapter (x)<span data-bind="visible: !!Title()">: </span><span data-bind="text: Title"></span></h3>
+	<h3 class="chapter-title">Chapter (x)<span data-bind="visible: !!ChapterName()">: </span><span data-bind="text: ChapterName"></span></h3>
 
 	<div class="element-group">
-        <input type="text" class="form-control" placeholder="Chapter name" data-bind="value: Title, valueUpdate: 'afterkeydown'" />
+        <input type="text" class="form-control" placeholder="Chapter name" data-bind="value: ChapterName, valueUpdate: 'afterkeydown'" />
         <input data-bind="element: FileInputElement" type="file" multiple="true" class="file-loading" />
 		<textarea class="form-control" style="height: 75px;"></textarea>
 	</div>

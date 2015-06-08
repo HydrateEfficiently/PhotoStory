@@ -47,7 +47,6 @@
 		var self = this;
 		$.post("/Chapter/SaveDraft", komapping.toJS(this))
 			.done(function () {
-				komapping.fromJS(data, self);
 				alert("Draft saved!");
 			})
 			.error(function () {

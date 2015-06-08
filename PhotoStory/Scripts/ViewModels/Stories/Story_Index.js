@@ -9,16 +9,8 @@
 		var self = this;
 
 		KnockoutPackage.callFromJS(this, data);
-		komapping.fromJS(data, this);
-		
-		this.Chapter_New = new Chapter_New({
-			ID: null,
-			StoryID: data.ID,
-			UserID: data.User.ID,
-			Title: null,
-			Description: null,
-			Photos: []
-		});
+		komapping.fromJS(data, this); // TODO: don't map ChapterDraft
+		this.Chapter_New = new Chapter_New(data.ChapterDraft);
 	}
 
 	return Story_Index;

@@ -1,4 +1,5 @@
 ﻿using PhotoStory.Models.Account;
+using PhotoStory.Models.Chapters;
 using PhotoStory.Models.Stories;
 using PhotoStory.Util;
 using System;
@@ -17,7 +18,9 @@ namespace PhotoStory.ViewModels.Stories {
 		[ModelMapping]
 		public User User { get; set; }
 
-		public Story_Index(Story story) : base(story) { }
+		[ModelMapping]
+		public Chapter ChapterDraft { get; set; }
 
+		public Story_Index(Story story) : base(story) { }
 	}
 }

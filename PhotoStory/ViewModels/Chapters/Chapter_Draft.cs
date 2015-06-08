@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PhotoStory.ViewModels.Chapters {
 
-	public class Chapter_SaveDraft : ViewModel<Chapter> {
+	public class Chapter_Draft : ViewModel<Chapter> {
 
 		[ModelMapping]
 		public int ID { get; set; }
@@ -19,9 +19,9 @@ namespace PhotoStory.ViewModels.Chapters {
 		[ModelMapping]
 		public int UserID { get; set; }
 
-		public Chapter_SaveDraft() { }
+		public Chapter_Draft() { }
 
-		public Chapter_SaveDraft(Chapter model) : base(model) { }
+		public Chapter_Draft(Chapter model) : base(model) { }
 
 	}
 }

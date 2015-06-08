@@ -24,7 +24,10 @@ namespace PhotoStory.Data.Relational.Entities.Chapters {
 		public ChapterStatus ChapterStatus { get; set; }
 
 		[ModelMapping]
-		public DateTime StartTime { get; set; }
+		public DateTime? StartTime { get; set; }
+
+		[ModelMapping]
+		public DateTime? LastDraftSavedTime { get; set; }
 
 		[ModelMapping]
 		public IEnumerable<int> PhotoIDs { get; set; }

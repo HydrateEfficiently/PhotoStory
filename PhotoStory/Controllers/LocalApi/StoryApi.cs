@@ -1,4 +1,5 @@
 ﻿using PhotoStory.Data.Relational;
+using PhotoStory.Models.Chapters;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using StoryEntity = PhotoStory.Data.Relational.Entities.Stories.Story;
@@ -9,6 +10,7 @@ namespace PhotoStory.Controllers.LocalApi {
 	public class StoryApi : BaseApi<StoryModel, StoryEntity> {
 
 		private AccountApi _accountApi;
+		private ChapterApi _chapterApi;
 
 		protected override string WorkingDbSetName {
 			get {
@@ -17,11 +19,16 @@ namespace PhotoStory.Controllers.LocalApi {
 		}
 
 		public StoryApi() {
-			_accountApi = new AccountApi(Context);
+			InitialiseApis();
 		}
 
 		public StoryApi(PhotoStoryContext context) : base(context) {
+			InitialiseApis();
+		}
+
+		private void InitialiseApis() {
 			_accountApi = new AccountApi(Context);
+			_chapterApi = new ChapterApi(Context);
 		}
 
 		public virtual async Task<StoryModel> GetByUser(int userId) {
@@ -40,6 +47,9 @@ namespace PhotoStory.Controllers.LocalApi {
 		private async Task<StoryModel> PopulateForeignKeys(StoryModel model) {
 			// TODO: "yield return" version for populating multiple models.
 			model.User = await _accountApi.Get(model.UserID);
+			model.ChapterDraft = model.ChapterDraftID < 1 ?
+				new Chapter() :
+				model.ChapterDraft = await _chapterApi.Get(model.ChapterDraftID);
 			return model;
 		}
 	}

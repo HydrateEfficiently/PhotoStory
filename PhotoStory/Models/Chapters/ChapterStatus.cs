@@ -4,12 +4,16 @@
 
 		Unknown = 0,
 
-		Started = 1,
+		NotStarted = 1,
 
-		DraftSaved = 2,
+		Started = 2,
+
+		DraftSaved = 3,
  
-		Published = 3,
+		Published = 4,
 
-		Deleted = 4
+		Edited = 5,
+
+		Deleted = 6
 	}
 }
