@@ -12,8 +12,12 @@
 		komapping.fromJS(data, this);
 		
 		this.Chapter_New = new Chapter_New({
+			ID: null,
 			StoryID: data.ID,
-			UserID: data.User.ID
+			UserID: data.User.ID,
+			Title: null,
+			Description: null,
+			Photos: []
 		});
 	}
 

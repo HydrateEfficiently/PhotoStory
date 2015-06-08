@@ -19,11 +19,18 @@ namespace PhotoStory.Models.Chapters {
 
 		public DateTime StartTime { get; set; }
 
+		public DateTime LastDraftSavedTime { get; set; }
+
 		public IEnumerable<int> PhotoIDs { get; set; }
 
 		public Chapter() {
 			ChapterStatus = ChapterStatus.Started;
-			StartTime = DateTime.Now;
+			StartTime = DateTime.UtcNow;
+		}
+
+		public void SaveDraft() {
+			ChapterStatus = ChapterStatus.DraftSaved;
+			LastDraftSavedTime = DateTime.UtcNow;
 		}
 
 	}

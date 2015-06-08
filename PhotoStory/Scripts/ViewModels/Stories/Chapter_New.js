@@ -13,10 +13,8 @@
 		KnockoutPackage.callFromJS(this, data);
 		komapping.fromJS(data, this);
 
-		this.Title = ko.observable();
 		this.FileInputElement = ko.observable();
 		this.CollapsiblePanelElement = ko.observable();
-		this.Photos = ko.observableArray();
 
 		this.FileUploader = new FileUploader(this.FileInputElement, {
 			uploadUrl: "/Photo/Upload",
@@ -33,14 +31,29 @@
 
 		this.CollapsiblePanel = new CollapsiblePanel(this.CollapsiblePanelElement, {
 			beforeFirstExpansionCallback: function (expansionAction) {
-				$.post("/Chapter/CreateNew", { StoryID: self.StoryID(), UserID: self.UserID() })
-					.done(expansionAction)
+				$.post("/Chapter/CreateNew", komapping.toJS(self))
+					.done(function (data) {
+						komapping.fromJS(data, self);
+						expansionAction();
+					})
 					.error(function () {
 						alert("Error creating new chapter");
 					});
 			}
 		});
 	}
+
+	Chapter_New.prototype.saveDraft = function () {
+		var self = this;
+		$.post("/Chapter/SaveDraft", komapping.toJS(this))
+			.done(function () {
+				komapping.fromJS(data, self);
+				alert("Draft saved!");
+			})
+			.error(function () {
+				alert("Draft saving failed!");
+			});
+	};
 
 	return Chapter_New;
 

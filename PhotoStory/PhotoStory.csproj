@@ -174,8 +174,6 @@
     <Compile Include="Controllers\LocalApi\ChapterApi.cs" />
     <Compile Include="Controllers\LocalApi\StoryApi.cs" />
     <Compile Include="Controllers\RemoteApi\BaseApiController.cs" />
-    <Compile Include="Controllers\RemoteApi\ChapterController.cs" />
-    <Compile Include="Controllers\RemoteApi\PhotoController.cs" />
     <Compile Include="Controllers\Mvc\BaseController.cs" />
     <Compile Include="Controllers\Mvc\ChapterController.cs" />
     <Compile Include="Controllers\Mvc\HomeController.cs" />
@@ -212,6 +210,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\User_Login.cs" />
     <Compile Include="ViewModels\Account\User_Register.cs" />
+    <Compile Include="ViewModels\Chapters\Chapter_SaveDraft.cs" />
     <Compile Include="ViewModels\Chapters\Chapter_New.cs" />
     <Compile Include="ViewModels\Photos\Photo_Uploaded.cs" />
     <Compile Include="ViewModels\Stories\Story_Index.cs" />
