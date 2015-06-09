@@ -18,11 +18,11 @@ namespace PhotoStory.Util.Extensions {
 			return helper.TextAreaFor(expression, GetHtmlAttributesWithDataBind(htmlAttributes, dataBindValue));
 		}
 
-		private static Dictionary<string, string> GetHtmlAttributesWithDataBind(object htmlAttributes, string dataBindValue) {
-			Dictionary<string, string> result = htmlAttributes == null ?
-				new Dictionary<string, string>() :
+		private static Dictionary<string, object> GetHtmlAttributesWithDataBind(object htmlAttributes, string dataBindValue) {
+			Dictionary<string, object> result = htmlAttributes == null ?
+				new Dictionary<string, object>() :
 				htmlAttributes.GetType().GetProperties()
-					.ToDictionary(x => x.Name, x => x.GetValue(htmlAttributes, null).ToString());
+					.ToDictionary(x => x.Name, x => x.GetValue(htmlAttributes, null));
 			result.Add("data-bind", dataBindValue);
 			return result;
 		}
