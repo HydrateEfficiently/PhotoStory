@@ -1,4 +1,6 @@
-﻿@{
+﻿@model PhotoStory.Models.Chapters.Chapter
+
+@{
 	Layout = "~/Views/Shared/Bootstrap/_CollapsiblePanel.cshtml";
 }
 
@@ -8,10 +10,12 @@
 	<div class="element-group">
         <input type="text" class="form-control" placeholder="Chapter name" data-bind="value: ChapterName, valueUpdate: 'afterkeydown'" />
         <input data-bind="element: FileInputElement" type="file" multiple="true" class="file-loading" />
+        @Html.DataBoundTextAreaFor(m => m.)
 		<textarea class="form-control" style="height: 75px;"></textarea>
 	</div>
 
 	<div class="pull-right-group">
+        @Html.TextAreaFor(;
 		<input type="button" class="btn btn-danger" value="Discard" />
 		<input type="button" class="btn btn-warning" value="Save Draft" data-bind="click: saveDraft" />
 		<input type="button" class="btn btn-success" value="Publish" />

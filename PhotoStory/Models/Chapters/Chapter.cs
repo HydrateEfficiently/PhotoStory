@@ -23,6 +23,8 @@ namespace PhotoStory.Models.Chapters {
 
 		public IEnumerable<int> PhotoIDs { get; set; }
 
+		public string Blog { get; set; }
+
 		public Chapter() {
 			ChapterStatus = ChapterStatus.NotStarted;
 		}

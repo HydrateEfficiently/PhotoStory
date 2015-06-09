@@ -32,6 +32,9 @@ namespace PhotoStory.Data.Relational.Entities.Chapters {
 		[ModelMapping]
 		public IEnumerable<int> PhotoIDs { get; set; }
 
+		[ModelMapping]
+		public string Blog { get; set; }
+
 		public Chapter() { }
 
 		public Chapter(ChapterModel chapterModel) : base(chapterModel) { }

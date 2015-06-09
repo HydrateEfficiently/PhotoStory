@@ -1,10 +1,6 @@
 ﻿using PhotoStory.Models.Chapters;
 using PhotoStory.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotoStory.ViewModels.Chapters {
 
@@ -18,6 +14,15 @@ namespace PhotoStory.ViewModels.Chapters {
 
 		[ModelMapping]
 		public int UserID { get; set; }
+
+		[ModelMapping]
+		public string ChapterName { get; set; }
+
+		[ModelMapping]
+		public DateTime? LastDraftSavedTime { get; set; }
+
+		[ModelMapping]
+		public string Blog { get; set; }
 
 		public Chapter_Draft() { }
 
