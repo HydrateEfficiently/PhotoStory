@@ -29,7 +29,7 @@ namespace PhotoStory.Controllers.Mvc {
 			Chapter initChapterModel = chapter.ToModel();
 			initChapterModel.SaveDraft();
 			Chapter savedChapterModel = await Extensions.TaskExtensions.WhenOne(_chapterApi.Post(initChapterModel));
-			Story story = await Extensions.TaskExtensions.WhenOne(_storyApi.PutChapterDraft(savedChapterModel));
+			await _storyApi.UpdateChapterDraft(savedChapterModel);
 			return Json(new Chapter_Draft(savedChapterModel));
 		}
 

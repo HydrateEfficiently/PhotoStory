@@ -45,7 +45,7 @@ namespace PhotoStory.Controllers.LocalApi {
 			return await PopulateForeignKeys(model);
 		}
 
-		public virtual async Task<StoryModel> PutChapterDraft(Chapter chapter) {
+		public virtual async Task UpdateChapterDraft(Chapter chapter) {
 			Chapter savedDraftChapter = await _chapterApi.Get(chapter.ID);
 			if (savedDraftChapter == null) {
 				throw new Exception(string.Format("Chapter of ID {0} not found.", chapter.ID));
@@ -55,7 +55,7 @@ namespace PhotoStory.Controllers.LocalApi {
 				throw new Exception("Inconsistent story and user information in chapter.");
 			}
 
-			StoryModel story = await Get(chapter.StoryID);
+			StoryEntity story = await WorkingDbSet.FindAsync(chapter.StoryID);
 			if (story == null) {
 				throw new Exception(string.Format("Story of ID {0} not found.", chapter.StoryID));
 			}
@@ -65,8 +65,7 @@ namespace PhotoStory.Controllers.LocalApi {
 			}
 
 			story.ChapterDraftID = chapter.ID;
-			await Put(story.ID, story);
-			return await Get(story.ID);
+			Context.SaveChanges();
 		}
 
 		private async Task<StoryModel> PopulateForeignKeys(StoryModel model) {
