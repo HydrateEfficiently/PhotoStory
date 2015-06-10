@@ -107,7 +107,7 @@ namespace PhotoStory.Controllers.LocalApi {
 
 		private TEntityType GetEntity(TModelType model) {
 			TEntityType entity = Activator.CreateInstance<TEntityType>();
-			ModelMapper.MapFromModel<TModelType>(entity, model);
+			ModelMapper.MapFromModel(model, entity);
 			return entity;
 		}
 

@@ -203,6 +203,7 @@
     <Compile Include="Util\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Util\Extensions\KnockoutHtmlHelperExtensions.cs" />
     <Compile Include="Util\Extensions\TaskExtensions.cs" />
+    <Compile Include="Util\SubModels\ModelMapper.cs" />
     <Compile Include="Util\SubModels\SubModel.cs" />
     <Compile Include="Data\Static\Photo\LocalRepository.cs" />
     <Compile Include="Data\Static\Photo\Repository.cs" />
