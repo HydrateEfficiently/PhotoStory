@@ -172,6 +172,7 @@
     <Compile Include="Controllers\LocalApi\AccountApi.cs" />
     <Compile Include="Controllers\LocalApi\BaseApi.cs" />
     <Compile Include="Controllers\LocalApi\ChapterApi.cs" />
+    <Compile Include="Controllers\LocalApi\PhotoApi.cs" />
     <Compile Include="Controllers\LocalApi\StoryApi.cs" />
     <Compile Include="Controllers\RemoteApi\BaseApiController.cs" />
     <Compile Include="Controllers\Mvc\BaseController.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Data\Relational\Entities\Chapters\Chapter.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
     <Compile Include="Data\Relational\Entities\Stories\Story.cs" />
+    <Compile Include="Models\Photos\PhotoKeyGenerator.cs" />
     <Compile Include="Migrations\201506081954267_InitialCreate.cs" />
     <Compile Include="Migrations\201506081954267_InitialCreate.Designer.cs">
       <DependentUpon>201506081954267_InitialCreate.cs</DependentUpon>
@@ -204,9 +206,8 @@
     <Compile Include="Util\SubModel.cs" />
     <Compile Include="Data\Static\Photo\LocalRepository.cs" />
     <Compile Include="Data\Static\Photo\Repository.cs" />
-    <Compile Include="Data\Static\Photo\RepositoryAsync.cs" />
     <Compile Include="Data\Static\Photo\S3Repository.cs" />
-    <Compile Include="Data\Static\Photo\Settings.cs" />
+    <Compile Include="Data\Static\Photo\RepositorySettings.cs" />
     <Compile Include="Data\Relational\PhotoStoryContext.cs" />
     <Compile Include="Data\Relational\PhotoStoryInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,6 +223,7 @@
     <Compile Include="ViewModels\Account\User_Register.cs" />
     <Compile Include="ViewModels\Chapters\Chapter_Draft.cs" />
     <Compile Include="ViewModels\Chapters\Chapter_New.cs" />
+    <Compile Include="ViewModels\Photos\Photo_ToUpload.cs" />
     <Compile Include="ViewModels\Photos\Photo_Uploaded.cs" />
     <Compile Include="ViewModels\Stories\Story_Index.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />

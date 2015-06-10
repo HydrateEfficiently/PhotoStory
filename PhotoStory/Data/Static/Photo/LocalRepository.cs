@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PhotoModel = PhotoStory.Models.Photos.Photo;
 
 namespace PhotoStory.Data.Static {
 
@@ -12,15 +13,16 @@ namespace PhotoStory.Data.Static {
 
 		private const string RootDirectory = "D:/PhotoStory/Photos";
 
-		public bool Upload(Photo photo) {
-			using (var image = photo.GetImage()) {
-				string dir = GetDirectory(photo);
-				image.Save(photo.FullKey);
-			}
-			return true;
+		public async Task UploadAsync(PhotoModel photo) {
+			await Task.WhenAll(new Task(() => {
+				using (var image = photo.GetImage()) {
+					string dir = GetDirectory(photo);
+					image.Save(photo.Key);
+				}
+			}));
 		}
 
-		private string GetDirectory(Photo photo) {
+		private string GetDirectory(PhotoModel photo) {
 			string dir = Path.Combine(RootDirectory, photo.DirectoryKey);
 			if (!Directory.Exists(dir)) {
 				Directory.CreateDirectory(dir);

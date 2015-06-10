@@ -17,9 +17,11 @@
 		this.CollapsiblePanelElement = ko.observable();
 
 		this.FileUploader = new FileUploader(this.FileInputElement, {
-			uploadUrl: "/Photo/Upload",
+			uploadUrl: "/Photo/UploadPhoto",
 			uploadExtraData: {
-				TestData: "I AM A STRING"
+				UserID: 1,
+				StoryID: 1,
+				ChapterID: 1
 			},
 			onUploadSuccess: function (event, data, previewId, index) {
 

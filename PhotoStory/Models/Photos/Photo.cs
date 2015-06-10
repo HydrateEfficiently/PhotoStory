@@ -18,13 +18,11 @@ namespace PhotoStory.Models.Photos {
 
 		public int StoryID { get; set; }
 
-		public DateTime UploadTime { get; set; }
-
-		public string DirectoryKey { get; set; }
+		public int ChapterID { get; set; }
 
 		public string FileName { get; set; }
 
-		public User User { get; set; }
+		public DateTime UploadTime { get; set; }
 
 		public string Extension {
 			get {
@@ -38,26 +36,25 @@ namespace PhotoStory.Models.Photos {
 			}
 		}
 
-		public string FullKey {
+		public string DirectoryKey {
 			get {
-				return string.Format("{0}/{1}_{2}", DirectoryKey, ID, FileName);
+				return PhotoKeyGenerator.GenerateDirectoryKey(this);
 			}
 		}
 
-		public Photo(PhotoUpload photoUpload) {
-			_stream = photoUpload.InputStream;
-			FileName = photoUpload.FileName;
-			StoryID = photoUpload.StoryID;
-			UserID = photoUpload.UserID;
+		public string Key {
+			get {
+				return PhotoKeyGenerator.GenerateKey(this);
+			}
 		}
 
-		public Photo(string path) {
-			_stream = File.Open(path, FileMode.Open);
-			FileName = Path.GetFileName(path).ToLower();
+		public Photo(Stream stream) {
+			_stream = stream;
 		}
 
 		public Photo() { }
 
+		// TODO: Needs work - Locking the stream, asynchronous, disposing the stream
 		public async Task<Stream> GetStreamAsync() {
 			var ms = new MemoryStream();
 			_stream.Position = 0;
@@ -66,13 +63,10 @@ namespace PhotoStory.Models.Photos {
 			return ms;
 		}
 
+		// TODO: Needs work - Locking the stream, asynchronous, disposing the stream
 		public Image GetImage() {
 			_stream.Position = 0;
 			return Image.FromStream(_stream);
-		}
-
-		public void Dispose() {
-			_stream.Dispose();
 		}
 	}
 }

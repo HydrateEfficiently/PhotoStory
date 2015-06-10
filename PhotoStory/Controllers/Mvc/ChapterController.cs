@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
-using Extensions = PhotoStory.Util.Extensions;
+using MyTaskExtensions = PhotoStory.Util.Extensions.TaskExtensions;
 
 namespace PhotoStory.Controllers.Mvc {
 
@@ -21,14 +21,14 @@ namespace PhotoStory.Controllers.Mvc {
 		private StoryApi _storyApi = new StoryApi();
 
 		public async Task<ActionResult> CreateNew(Chapter_New chapter) {
-			Chapter chapterModel = await Extensions.TaskExtensions.WhenOne(_chapterApi.Post(chapter.ToModel()));
+			Chapter chapterModel = await MyTaskExtensions.WhenOne(_chapterApi.Post(chapter.ToModel()));
 			return Json(new Chapter_New(chapterModel));
 		}
 
 		public async Task<ActionResult> SaveDraft(Chapter_Draft chapter) {
 			Chapter initChapterModel = chapter.ToModel();
 			initChapterModel.SaveDraft();
-			Chapter savedChapterModel = await Extensions.TaskExtensions.WhenOne(_chapterApi.Post(initChapterModel));
+			Chapter savedChapterModel = await MyTaskExtensions.WhenOne(_chapterApi.Post(initChapterModel));
 			await _storyApi.UpdateChapterDraft(savedChapterModel);
 			return Json(new Chapter_Draft(savedChapterModel));
 		}
