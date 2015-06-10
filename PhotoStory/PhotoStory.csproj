@@ -185,7 +185,7 @@
     <Compile Include="Data\Relational\Entities\Chapters\Chapter.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
     <Compile Include="Data\Relational\Entities\Stories\Story.cs" />
-    <Compile Include="Models\Photos\PhotoKeyGenerator.cs" />
+    <Compile Include="Models\Photos\PhotoUrlGenerator.cs" />
     <Compile Include="Migrations\201506081954267_InitialCreate.cs" />
     <Compile Include="Migrations\201506081954267_InitialCreate.Designer.cs">
       <DependentUpon>201506081954267_InitialCreate.cs</DependentUpon>
@@ -203,7 +203,7 @@
     <Compile Include="Util\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Util\Extensions\KnockoutHtmlHelperExtensions.cs" />
     <Compile Include="Util\Extensions\TaskExtensions.cs" />
-    <Compile Include="Util\SubModel.cs" />
+    <Compile Include="Util\SubModels\SubModel.cs" />
     <Compile Include="Data\Static\Photo\LocalRepository.cs" />
     <Compile Include="Data\Static\Photo\Repository.cs" />
     <Compile Include="Data\Static\Photo\S3Repository.cs" />

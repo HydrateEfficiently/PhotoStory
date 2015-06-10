@@ -1,19 +1,17 @@
-﻿using System;
+﻿using PhotoStory.Data.Static;
+using System;
 using System.Collections.Generic;
 
 namespace PhotoStory.Models.Photos {
 
-	public class PhotoKeyGenerator {
+	public class PhotoUrlGenerator {
+
+		public static string GenerateUrl(Photo photo) {
+			return string.Format("{0}/{1}", RepositorySettings.RootUrl, GenerateKey(photo));
+		}
 
 		public static string GenerateKey(Photo photo) {
-			ValidatePhoto(photo);
-			string directoryKey = string.Join("/", new List<object>() {
-				photo.UserID,
-				photo.StoryID,
-				photo.ChapterID,
-				photo.ID
-			}.ConvertAll(x => x.ToString()));
-			return string.Format("{0}/{1}_{2}", directoryKey, photo.ID, photo.FileName);
+			return string.Format("{0}/{1}_{2}", GenerateDirectoryKey(photo), photo.ID, photo.FileName);
 		}
 
 		public static string GenerateDirectoryKey(Photo photo) {

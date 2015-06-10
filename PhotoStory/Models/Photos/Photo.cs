@@ -38,13 +38,19 @@ namespace PhotoStory.Models.Photos {
 
 		public string DirectoryKey {
 			get {
-				return PhotoKeyGenerator.GenerateDirectoryKey(this);
+				return PhotoUrlGenerator.GenerateDirectoryKey(this);
 			}
 		}
 
 		public string Key {
 			get {
-				return PhotoKeyGenerator.GenerateKey(this);
+				return PhotoUrlGenerator.GenerateKey(this);
+			}
+		}
+
+		public string Url {
+			get {
+				return PhotoUrlGenerator.GenerateUrl(this);
 			}
 		}
 

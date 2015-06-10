@@ -1,4 +1,4 @@
-﻿using PhotoStory.Util;
+﻿using PhotoStory.Util.SubModels;
 using StoryModel = PhotoStory.Models.Stories.Story;
 
 namespace PhotoStory.Data.Relational.Entities.Stories {

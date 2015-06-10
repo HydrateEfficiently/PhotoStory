@@ -1,5 +1,5 @@
 ﻿using PhotoStory.Data.Relational.Entities.Photos;
-using PhotoStory.Util;
+using PhotoStory.Util.SubModels;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

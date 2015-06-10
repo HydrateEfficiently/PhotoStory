@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
-namespace PhotoStory.Util {
+namespace PhotoStory.Util.SubModels {
 
 	// TODO: Copy all other attributes from the Model i.e. validation attributes
 
@@ -26,8 +26,16 @@ namespace PhotoStory.Util {
 
 		public ModelMappingType ModelMappingType { get; private set; }
 
-		public ModelMappingAttribute(string modelPropertyName = null, ModelMappingType modelMappingType = ModelMappingType.Property) {
+		public ModelMappingDirection ModelMappingDirection { get; set; }
+
+		public ModelMappingAttribute(
+			string modelPropertyName = null,
+			ModelMappingType modelMappingType = ModelMappingType.Property,
+			ModelMappingDirection modelMappindDirection = ModelMappingDirection.Bidirectional) {
+
 			ModelPropertyName = modelPropertyName;
+			ModelMappingType = modelMappingType;
+			ModelMappingDirection = ModelMappingDirection; // TODO?
 		}
 	}
 
@@ -38,6 +46,17 @@ namespace PhotoStory.Util {
 		Property = 1,
 
 		ConstructorParameter = 2
+	}
+
+	public enum ModelMappingDirection {
+
+		Unknown = 0,
+
+		ToModel = 1,
+
+		FromModel = 2,
+
+		Bidirectional = 4
 	}
 
 	public static class ModelMapper {
@@ -103,7 +122,11 @@ namespace PhotoStory.Util {
 		private static bool TryGetMappedProperty<T>(PropertyInfo subModelPropertyInfo, out PropertyInfo modelPropertyInfo) {
 			if (HasMappedProperty(subModelPropertyInfo)) {
 				string modelPropertyName = GetModelMappingAttribute(subModelPropertyInfo).ModelPropertyName ?? subModelPropertyInfo.Name;
-				modelPropertyInfo = typeof(T).GetProperty(modelPropertyName);
+				Type modelType = typeof(T);
+				modelPropertyInfo = modelType.GetProperty(modelPropertyName);
+				if (modelPropertyInfo == null) {
+					throw new Exception(string.Format("ModelMapping was declared for property {0} but {1}.{0} does not exist", modelPropertyName, modelType.FullName));
+				}
 				return true;
 			}
 			modelPropertyInfo = null;

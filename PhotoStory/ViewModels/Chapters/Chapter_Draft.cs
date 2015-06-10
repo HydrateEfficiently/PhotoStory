@@ -1,5 +1,5 @@
 ﻿using PhotoStory.Models.Chapters;
-using PhotoStory.Util;
+using PhotoStory.Util.SubModels;
 using System;
 
 namespace PhotoStory.ViewModels.Chapters {

@@ -1,7 +1,7 @@
 ﻿using PhotoStory.Data.Relational;
 using PhotoStory.Data.Relational.Entities;
 using PhotoStory.Models;
-using PhotoStory.Util;
+using PhotoStory.Util.SubModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

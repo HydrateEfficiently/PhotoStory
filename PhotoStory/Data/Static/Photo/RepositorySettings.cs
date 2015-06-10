@@ -10,8 +10,11 @@ namespace PhotoStory.Data.Static {
 
 		public static Repository Instance { get; private set; }
 
+		public static string RootUrl { get; private set; }
+
 		static RepositorySettings() {
 			Instance = new LocalRepository();
+			RootUrl = "D:/PhotoStory/Photos";
 		}
 	}
 }
