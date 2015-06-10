@@ -31,7 +31,7 @@ namespace PhotoStory.Controllers.Mvc {
 				return RedirectToLocal(returnUrl);
 			} else {
 				ModelState.AddModelError("", "The user name or password provided is incorrect.");
-				return View(model);
+				return View("~/Views/Accounts/User_Login.cshtml", model);
 			}
 		}
 
