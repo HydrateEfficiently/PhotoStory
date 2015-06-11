@@ -24,9 +24,14 @@ namespace PhotoStory.Controllers.LocalApi {
 
 		// TODO: Delete entity if save fails
 		public override async Task<PhotoModel> Post(PhotoModel model) {
-			var result = await base.Post(model);
-			await RepositorySettings.Instance.UploadAsync(result);
-			return result;
+			model.ID = (await base.Post(model)).ID;
+			await RepositorySettings.Instance.UploadAsync(model).ContinueWith(async t => {
+				if (t.Exception != null) {
+					await Delete(model.ID);
+					throw t.Exception;
+				}
+			});
+			return model;
 		}
 
 	}

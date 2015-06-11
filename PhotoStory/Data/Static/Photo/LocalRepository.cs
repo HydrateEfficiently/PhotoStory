@@ -14,12 +14,14 @@ namespace PhotoStory.Data.Static {
 		private const string RootDirectory = "D:/PhotoStory/Photos";
 
 		public async Task UploadAsync(PhotoModel photo) {
-			await Task.WhenAll(new Task(() => {
+			var task = new Task(() => {
 				using (var image = photo.GetImage()) {
 					string dir = GetDirectory(photo);
-					image.Save(photo.Key);
+					image.Save(photo.Url);
 				}
-			}));
+			});
+			task.Start();
+			await Task.WhenAll(task);
 		}
 
 		private string GetDirectory(PhotoModel photo) {

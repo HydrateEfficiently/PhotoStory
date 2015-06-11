@@ -25,18 +25,20 @@ namespace PhotoStory.ViewModels.Photos {
 		[ModelMapping]
 		public DateTime UploadTime { get; set; }
 
-		[ModelMapping(modelMappingType: ModelMappingType.ConstructorParameter)]
+		[ModelMapping(ModelMappingType: ModelMappingType.ConstructorParameter)]
 		public Stream InputStream { get; set; }
 
+		[ModelMapping(ModelMappingDirection: ModelMappingDirection.FromModel)]
 		public string Url { get; set; }
 
 		public Photo_Uploaded() { }
 
-		public Photo_Uploaded(Photo model) : base(model) {
-			Url = model.Url; // Only map Url from model to viewmodel, not vice versa.
-		}
+		public Photo_Uploaded(Photo model) : base(model) { }
 
 		public Photo_Uploaded(Photo_ToUpload photoToUpload, HttpPostedFileBase file) {
+			UserID = photoToUpload.UserID;
+			StoryID = photoToUpload.StoryID;
+			ChapterID = photoToUpload.ChapterID;
 			FileName = file.FileName;
 			InputStream = file.InputStream;
 			UploadTime = DateTime.Now;

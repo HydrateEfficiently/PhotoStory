@@ -14,18 +14,19 @@ namespace PhotoStory.Data.Relational.Entities.Photos {
 	public class Photo : Entity<PhotoModel> {
 
 		[ModelMapping]
-		public DateTime UploadTime { get; set; }
+		public int UserID { get; set; }
 
 		[ModelMapping]
-		public string FullKey { get; set; }
+		public int StoryID { get; set; }
+
+		[ModelMapping]
+		public int ChapterID { get; set; }
 
 		[ModelMapping]
 		public string FileName { get; set; }
 
 		[ModelMapping]
-		public int UserID { get; set; }
-
-		public virtual User User { get; set; }
+		public DateTime UploadTime { get; set; }
 
 		public Photo() { }
 

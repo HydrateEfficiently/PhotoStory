@@ -29,13 +29,13 @@ namespace PhotoStory.Util.SubModels {
 		public ModelMappingDirection ModelMappingDirection { get; set; }
 
 		public ModelMappingAttribute(
-			string modelPropertyName = null,
-			ModelMappingType modelMappingType = ModelMappingType.Property,
-			ModelMappingDirection modelMappindDirection = ModelMappingDirection.Bidirectional) {
+			string ModelPropertyName = null,
+			ModelMappingType ModelMappingType = ModelMappingType.Property,
+			ModelMappingDirection ModelMappingDirection = ModelMappingDirection.Bidirectional) {
 
-			ModelPropertyName = modelPropertyName;
-			ModelMappingType = modelMappingType;
-			ModelMappingDirection = ModelMappingDirection; // TODO?
+			this.ModelPropertyName = ModelPropertyName;
+			this.ModelMappingType = ModelMappingType;
+			this.ModelMappingDirection = ModelMappingDirection;
 		}
 	}
 
@@ -56,6 +56,6 @@ namespace PhotoStory.Util.SubModels {
 
 		FromModel = 2,
 
-		Bidirectional = 4
+		Bidirectional = 3
 	}
 }

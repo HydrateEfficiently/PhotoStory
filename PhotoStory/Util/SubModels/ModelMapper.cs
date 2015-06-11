@@ -30,7 +30,7 @@ namespace PhotoStory.Util.SubModels {
 				PropertyInfo mappedProperty = constructorMappedProperties.First();
 				object mappedPropertyValue = mappedProperty.GetValue(subModel);
 				Type modelType = typeof(TModel);
-				ConstructorInfo constuctorInfo = modelType.GetConstructor(new [] { subModel.GetType() });
+				ConstructorInfo constuctorInfo = modelType.GetConstructor(new[] { mappedPropertyValue.GetType() });
 				if (constuctorInfo == null) {
 					throw new Exception("Could not find appropriate constructor");
 				}
@@ -47,7 +47,7 @@ namespace PhotoStory.Util.SubModels {
 					string modelPropertyName = GetModelPropertyName(subModelProperty, attribute);
 					PropertyInfo modelProperty = GetModelProperty(modelType, modelPropertyName);
 					if (modelProperty == null) {
-						throw new Exception(string.Format("ModelMapping was declared for property {0} but {1}.{0} does not exist", modelProperty.Name, modelType.FullName));
+						throw new Exception(string.Format("ModelMapping was declared for property {0} but {1}.{0} does not exist", modelPropertyName, modelType.FullName));
 					}
 
 					if (direction == ModelMappingDirection.ToModel) {

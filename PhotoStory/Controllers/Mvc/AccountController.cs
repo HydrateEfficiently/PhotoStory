@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebMatrix.WebData;
+using MyTaskExtensions = PhotoStory.Util.Extensions.TaskExtensions;
 
 namespace PhotoStory.Controllers.Mvc {
 
@@ -45,7 +46,8 @@ namespace PhotoStory.Controllers.Mvc {
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Register(User_Register user) {
 			if (ModelState.IsValid) {
-				User registeredUser = (await Task.WhenAll(_accountApi.Post(user.ToModel())))[0];
+				User model = user.ToModel();
+				User registeredUser = await MyTaskExtensions.WhenOne(_accountApi.Post(model));
 				if (Login(new User_Login(user))) {
 					return RedirectToAction("Index", "Home");
 				} else {

@@ -186,15 +186,6 @@
     <Compile Include="Data\Relational\Entities\Entity.cs" />
     <Compile Include="Data\Relational\Entities\Stories\Story.cs" />
     <Compile Include="Models\Photos\PhotoUrlGenerator.cs" />
-    <Compile Include="Migrations\201506081954267_InitialCreate.cs" />
-    <Compile Include="Migrations\201506081954267_InitialCreate.Designer.cs">
-      <DependentUpon>201506081954267_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506092218319_AddChapterBlog.cs" />
-    <Compile Include="Migrations\201506092218319_AddChapterBlog.Designer.cs">
-      <DependentUpon>201506092218319_AddChapterBlog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\MembershipCreateStatusString.cs" />
     <Compile Include="Models\Chapters\Chapter.cs" />
     <Compile Include="Models\Chapters\ChapterStatus.cs" />
@@ -318,14 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Accounts\User_Register.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506081954267_InitialCreate.resx">
-      <DependentUpon>201506081954267_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506092218319_AddChapterBlog.resx">
-      <DependentUpon>201506092218319_AddChapterBlog.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
