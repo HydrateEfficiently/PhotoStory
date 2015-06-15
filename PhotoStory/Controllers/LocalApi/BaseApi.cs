@@ -1,5 +1,6 @@
 ﻿using PhotoStory.Data.Relational;
 using PhotoStory.Data.Relational.Entities;
+using PhotoStory.Data.Static;
 using PhotoStory.Models;
 using PhotoStory.Util.SubModels;
 using System;
@@ -18,6 +19,12 @@ namespace PhotoStory.Controllers.LocalApi {
 		private PhotoStoryContext _context;
 		private DbSet<TEntityType> _workingDbSet;
 
+		protected ChapterApi ChapterApi {
+			get {
+				return new ChapterApi(Context);
+			}
+		}
+
 		protected PhotoStoryContext Context {
 			get {
 				return _context;
@@ -27,6 +34,12 @@ namespace PhotoStory.Controllers.LocalApi {
 		protected DbSet<TEntityType> WorkingDbSet {
 			get {
 				return _workingDbSet;
+			}
+		}
+
+		protected Repository Repository {
+			get {
+				return RepositorySettings.Instance;
 			}
 		}
 

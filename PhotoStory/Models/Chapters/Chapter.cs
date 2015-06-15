@@ -21,7 +21,7 @@ namespace PhotoStory.Models.Chapters {
 
 		public DateTime? LastDraftSavedTime { get; set; }
 
-		public IEnumerable<int> PhotoIDs { get; set; }
+		public IEnumerable<Photo> Photos { get; set; }
 
 		public string Blog { get; set; }
 

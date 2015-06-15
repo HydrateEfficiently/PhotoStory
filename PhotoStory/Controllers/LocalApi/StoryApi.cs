@@ -45,19 +45,21 @@ namespace PhotoStory.Controllers.LocalApi {
 			return await PopulateForeignKeys(model);
 		}
 
-		public virtual async Task UpdateChapterDraft(Chapter chapter) {
+		public virtual async Task AddDraftChapter(int storyId, Chapter chapter) {
 			Chapter savedDraftChapter = await _chapterApi.Get(chapter.ID);
 			if (savedDraftChapter == null) {
 				throw new Exception(string.Format("Chapter of ID {0} not found.", chapter.ID));
 			}
 
-			if (savedDraftChapter.StoryID != chapter.StoryID || savedDraftChapter.UserID != chapter.UserID) {
+			if (savedDraftChapter.StoryID != chapter.StoryID ||
+				savedDraftChapter.StoryID != storyId ||
+				savedDraftChapter.UserID != chapter.UserID) {
 				throw new Exception("Inconsistent story and user information in chapter.");
 			}
 
-			StoryEntity story = await WorkingDbSet.FindAsync(chapter.StoryID);
+			StoryEntity story = await WorkingDbSet.FindAsync(storyId);
 			if (story == null) {
-				throw new Exception(string.Format("Story of ID {0} not found.", chapter.StoryID));
+				throw new Exception(string.Format("Story of ID {0} not found.", storyId));
 			}
 
 			if (story.UserID != chapter.UserID) {
