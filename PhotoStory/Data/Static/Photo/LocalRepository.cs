@@ -31,5 +31,10 @@ namespace PhotoStory.Data.Static {
 			}
 			return dir;
 		}
+
+
+		public Task<bool> DeleteAsync(PhotoModel photo) {
+			throw new NotImplementedException();
+		}
 	}
 }

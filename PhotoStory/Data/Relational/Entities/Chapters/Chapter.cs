@@ -1,4 +1,5 @@
-﻿using PhotoStory.Models.Chapters;
+﻿using PhotoStory.Data.Relational.Entities.Photos;
+using PhotoStory.Models.Chapters;
 using PhotoStory.Util.SubModels;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace PhotoStory.Data.Relational.Entities.Chapters {
 		public DateTime? LastDraftSavedTime { get; set; }
 
 		[ModelMapping]
-		public IEnumerable<int> PhotoIDs { get; set; }
+		public IEnumerable<Photo> Photos { get; set; }
 
 		[ModelMapping]
 		public string Blog { get; set; }
@@ -38,6 +39,5 @@ namespace PhotoStory.Data.Relational.Entities.Chapters {
 		public Chapter() { }
 
 		public Chapter(ChapterModel chapterModel) : base(chapterModel) { }
-
 	}
 }

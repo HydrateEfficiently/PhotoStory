@@ -7,6 +7,7 @@ using PhotoEntity = PhotoStory.Data.Relational.Entities.Photos.Photo;
 using PhotoStory.Data.Relational;
 using System.Threading.Tasks;
 using PhotoStory.Data.Static;
+using PhotoStory.Util.Extensions;
 
 namespace PhotoStory.Controllers.LocalApi {
 
@@ -18,19 +19,27 @@ namespace PhotoStory.Controllers.LocalApi {
 			}
 		}
 
-		public PhotoApi() { }
+		public PhotoApi() {	}
 
 		public PhotoApi(PhotoStoryContext context) : base(context) { }
 
-		// TODO: Delete entity if save fails
 		public override async Task<PhotoModel> Post(PhotoModel model) {
-			model.ID = (await base.Post(model)).ID;
-			await RepositorySettings.Instance.UploadAsync(model).ContinueWith(async t => {
-				if (t.Exception != null) {
-					await Delete(model.ID);
-					throw t.Exception;
-				}
-			});
+			await base.Post(model)
+				.ContinueWithOrRollback(
+					async t => {
+						model.ID = t.Result.ID;
+						await Repository.UploadAsync(model);
+					},
+					async t => {
+						await Delete(model.ID);
+					});
+				//.ContinueWithOrRollback(
+				//	async t => {
+				//		await ChapterApi.AddPhoto(model.ChapterID, model);
+				//	},
+				//	async t => {
+				//		await Repository.DeleteAsync(model);
+				//	});
 			return model;
 		}
 

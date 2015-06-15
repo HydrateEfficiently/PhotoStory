@@ -28,5 +28,10 @@ namespace PhotoStory.Data.Static {
 			//	}
 			//}));
 		}
+
+
+		public Task<bool> DeleteAsync(Photo photo) {
+			throw new System.NotImplementedException();
+		}
 	}
 }

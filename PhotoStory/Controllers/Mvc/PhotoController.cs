@@ -1,15 +1,8 @@
 ﻿using PhotoStory.Controllers.LocalApi;
-using PhotoStory.Models.Account;
 using PhotoStory.Models.Photos;
 using PhotoStory.ViewModels.Photos;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.Results;
 using System.Web.Mvc;
 using MyTaskExtensions = PhotoStory.Util.Extensions.TaskExtensions;
 
@@ -28,6 +21,9 @@ namespace PhotoStory.Controllers.Mvc {
 
 			var photoUploaded = new Photo_Uploaded(photoToUpload, Request.Files[0]);
 			Photo photo = await MyTaskExtensions.WhenOne<Photo>(_photoApi.Post(photoUploaded.ToModel()));
+
+
+
 			return Json(photo);
 		}
 
