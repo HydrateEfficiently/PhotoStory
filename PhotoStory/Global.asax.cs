@@ -24,6 +24,14 @@ namespace PhotoStory {
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+			var userModel = new PhotoStory.Models.Public.Accounts.User() {
+				DisplayName = "Mike",
+				Password = "Test",
+				Email = "email@domain.com"
+			};
+
+			var userEntity = new PhotoStory.Models.Entity.Accounts.User(userModel);
+
 			Database.SetInitializer<PhotoStoryContext>(null);
 			try {
 				using (

@@ -43,6 +43,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="AWSSDK">
       <HintPath>..\packages\AWSSDK.2.3.40.0\lib\net45\AWSSDK.dll</HintPath>
     </Reference>
@@ -185,12 +191,16 @@
     <Compile Include="Data\Relational\Entities\Chapters\Chapter.cs" />
     <Compile Include="Data\Relational\Entities\Entity.cs" />
     <Compile Include="Data\Relational\Entities\Stories\Story.cs" />
+    <Compile Include="Models\Entity\Accounts\User.cs" />
+    <Compile Include="Models\Entity\Entity.cs" />
     <Compile Include="Models\Photos\PhotoUrlGenerator.cs" />
     <Compile Include="Models\Account\MembershipCreateStatusString.cs" />
     <Compile Include="Models\Chapters\Chapter.cs" />
     <Compile Include="Models\Chapters\ChapterStatus.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Photos\PhotoUpload.cs" />
+    <Compile Include="Models\Public\Accounts\User.cs" />
+    <Compile Include="Models\Public\Model.cs" />
     <Compile Include="Util\Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Util\Extensions\KnockoutHtmlHelperExtensions.cs" />
     <Compile Include="Util\Extensions\TaskExtensions.cs" />
@@ -340,6 +350,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
