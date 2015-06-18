@@ -61,8 +61,6 @@ namespace PhotoStory.Controllers.LocalApi {
 				savedDraftChapter = await _chapterApi.Get(chapter.ID);
 			} else {
 				savedDraftChapter = await _chapterApi.Post(chapter);
-				story.DraftChapterID = chapter.ID;
-				Context.SaveChanges();
 			}
 
 			return savedDraftChapter;
@@ -96,9 +94,9 @@ namespace PhotoStory.Controllers.LocalApi {
 		private async Task<StoryModel> PopulateForeignKeys(StoryModel model) {
 			// TODO: "yield return" version for populating multiple models.
 			model.User = await _accountApi.Get(model.UserID);
-			model.DraftChapter = model.DraftChapterID < 1 ?
+			model.DraftChapter = model.DraftChapterID == null ?
 				new Chapter() { StoryID = model.ID, UserID = model.UserID } :
-				model.DraftChapter = await _chapterApi.Get(model.DraftChapterID);
+				model.DraftChapter = await _chapterApi.Get(model.DraftChapterID.Value);
 			return model;
 		}
 	}

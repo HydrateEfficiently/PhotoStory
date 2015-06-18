@@ -14,7 +14,7 @@ namespace PhotoStory.Models.Stories {
 
 		public User User { get; set; }
 
-		public int DraftChapterID { get; set; }
+		public int? DraftChapterID { get; set; }
 
 		public Chapter DraftChapter { get; set; }
 

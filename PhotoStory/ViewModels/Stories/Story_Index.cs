@@ -19,7 +19,7 @@ namespace PhotoStory.ViewModels.Stories {
 		public User User { get; set; }
 
 		[ModelMapping]
-		public Chapter ChapterDraft { get; set; }
+		public Chapter DraftChapter { get; set; }
 
 		public Story_Index(Story story) : base(story) { }
 	}

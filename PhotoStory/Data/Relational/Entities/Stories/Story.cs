@@ -1,4 +1,5 @@
-﻿using PhotoStory.Data.Relational.Entities.Chapters;
+﻿using PhotoStory.Data.Relational.Entities.Account;
+using PhotoStory.Data.Relational.Entities.Chapters;
 using PhotoStory.Util.SubModels;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,10 +11,15 @@ namespace PhotoStory.Data.Relational.Entities.Stories {
 	public class Story : Entity<StoryModel> {
 
 		[ModelMapping]
+		[Required]
 		public int UserID { get; set; }
 
 		[ModelMapping]
 		public int? DraftChapterID { get; set; }
+
+		[ModelMapping]
+		[ForeignKey("UserID")]
+		public virtual User User { get; set; }
 
 		[ModelMapping]
 		[ForeignKey("DraftChapterID")]
