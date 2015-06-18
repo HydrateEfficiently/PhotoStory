@@ -1,7 +1,9 @@
 ﻿using PhotoStory.Data.Relational.Entities.Account;
+using PhotoStory.Data.Relational.Entities.Chapters;
 using PhotoStory.Util.SubModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Linq;
@@ -20,6 +22,7 @@ namespace PhotoStory.Data.Relational.Entities.Photos {
 		public int StoryID { get; set; }
 
 		[ModelMapping]
+		[ForeignKey("Chapter")]
 		public int ChapterID { get; set; }
 
 		[ModelMapping]
@@ -27,6 +30,8 @@ namespace PhotoStory.Data.Relational.Entities.Photos {
 
 		[ModelMapping]
 		public DateTime UploadTime { get; set; }
+
+		public Chapter Chapter { get; set; }
 
 		public Photo() { }
 

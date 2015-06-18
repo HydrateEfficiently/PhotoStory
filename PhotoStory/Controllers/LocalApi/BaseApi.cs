@@ -57,7 +57,8 @@ namespace PhotoStory.Controllers.LocalApi {
 		}
 
 		public virtual async Task<TModelType> Get(int id) {
-			return (await _workingDbSet.FindAsync(id)).ToModel();
+			TEntityType entity = await _workingDbSet.FindAsync(id);
+			return entity.ToModel();
 		}
 
 		public virtual async Task Put(int id, TModelType model) {

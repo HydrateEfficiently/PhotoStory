@@ -12,19 +12,16 @@ namespace PhotoStory.Controllers.Mvc {
 
 		private PhotoApi _photoApi = new PhotoApi();
 
-		public async Task<ActionResult> UploadPhoto(Photo_ToUpload photoToUpload) {
+		public async Task<ActionResult> UploadPhoto(Photo_FromClient photoFromClient) {
 			if (Request.Files.Count == 0) {
 				throw new Exception("Could not find file associated with the request.");
 			} else if (Request.Files.Count > 1) {
 				throw new Exception("Multiple files associated with the request were found");
 			}
 
-			var photoUploaded = new Photo_Uploaded(photoToUpload, Request.Files[0]);
-			Photo photo = await MyTaskExtensions.WhenOne<Photo>(_photoApi.Post(photoUploaded.ToModel()));
-
-
-
-			return Json(photo);
+			var photoToSave = new Photo_ToSave(photoFromClient, Request.Files[0]);
+			Photo photo = await MyTaskExtensions.WhenOne<Photo>(_photoApi.Post(photoToSave.ToModel()));
+			return Json(new Photo_Saved(photo));
 		}
 
 	}

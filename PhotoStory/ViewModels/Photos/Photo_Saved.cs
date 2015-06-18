@@ -2,13 +2,12 @@
 using PhotoStory.Util.SubModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 
 namespace PhotoStory.ViewModels.Photos {
 
-	public class Photo_Uploaded : ViewModel<Photo> {
+	public class Photo_Saved : ViewModel<Photo> {
 
 		[ModelMapping]
 		public int UserID { get; set; }
@@ -25,23 +24,11 @@ namespace PhotoStory.ViewModels.Photos {
 		[ModelMapping]
 		public DateTime UploadTime { get; set; }
 
-		[ModelMapping(ModelMappingType: ModelMappingType.ConstructorParameter)]
-		public Stream InputStream { get; set; }
-
 		[ModelMapping(ModelMappingDirection: ModelMappingDirection.FromModel)]
 		public string Url { get; set; }
 
-		public Photo_Uploaded() { }
+		public Photo_Saved() { }
 
-		public Photo_Uploaded(Photo model) : base(model) { }
-
-		public Photo_Uploaded(Photo_ToUpload photoToUpload, HttpPostedFileBase file) {
-			UserID = photoToUpload.UserID;
-			StoryID = photoToUpload.StoryID;
-			ChapterID = photoToUpload.ChapterID;
-			FileName = file.FileName;
-			InputStream = file.InputStream;
-			UploadTime = DateTime.Now;
-		}
+		public Photo_Saved(Photo model) : base(model) { }
 	}
 }

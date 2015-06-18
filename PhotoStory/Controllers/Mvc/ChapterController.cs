@@ -26,11 +26,16 @@ namespace PhotoStory.Controllers.Mvc {
 		}
 
 		public async Task<ActionResult> SaveDraft(Chapter_Draft chapter) {
-			Chapter initChapterModel = chapter.ToModel();
-			initChapterModel.SaveDraft();
-			Chapter savedChapterModel = await MyTaskExtensions.WhenOne(_chapterApi.Post(initChapterModel));
-			await _storyApi.AddDraftChapter(initChapterModel.StoryID, savedChapterModel);
-			return Json(new Chapter_Draft(savedChapterModel));
+			//Chapter initChapterModel = chapter.ToModel();
+			//initChapterModel.SaveDraft();
+			//Chapter savedChapterModel = await MyTaskExtensions.WhenOne(_chapterApi.Post(initChapterModel));
+			//await _storyApi.AddDraftChapter(initChapterModel.StoryID, savedChapterModel);
+			//return Json(new Chapter_Draft(savedChapterModel));
+
+			Chapter chapterModel = chapter.ToModel();
+			chapterModel.SaveDraft();
+			Chapter savedChapterDraft = await _storyApi.PutDraftChapter(chapterModel.StoryID, chapterModel);
+			return Json(savedChapterDraft);
 		}
 
 		protected override void Dispose(bool disposing) {

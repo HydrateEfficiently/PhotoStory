@@ -215,8 +215,9 @@
     <Compile Include="ViewModels\Account\User_Register.cs" />
     <Compile Include="ViewModels\Chapters\Chapter_Draft.cs" />
     <Compile Include="ViewModels\Chapters\Chapter_New.cs" />
-    <Compile Include="ViewModels\Photos\Photo_ToUpload.cs" />
-    <Compile Include="ViewModels\Photos\Photo_Uploaded.cs" />
+    <Compile Include="ViewModels\Photos\Photo_FromClient.cs" />
+    <Compile Include="ViewModels\Photos\Photo_Saved.cs" />
+    <Compile Include="ViewModels\Photos\Photo_ToSave.cs" />
     <Compile Include="ViewModels\Stories\Story_Index.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
   </ItemGroup>
@@ -271,6 +272,7 @@
     <Content Include="Scripts\Util\CollapsiblePanel.js" />
     <Content Include="Scripts\Util\FileUploader.js" />
     <Content Include="Scripts\ViewModels\Stories\Chapter_New.js" />
+    <Content Include="Scripts\ViewModels\Stories\Saved_Photo.js" />
     <Content Include="Scripts\ViewModels\Stories\Story_Index.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

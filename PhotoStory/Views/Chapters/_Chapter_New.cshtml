@@ -9,6 +9,11 @@
 
 	<div class="element-group">
         <input type="text" class="form-control" placeholder="Chapter name" data-bind="value: ChapterName, valueUpdate: 'afterkeydown'" />
+
+        <div data-bind="foreach: Photos">
+            <img src="" data-bind="attr: { url: Url }" style="height: 50px" />
+        </div>
+
         <input data-bind="element: FileInputElement" type="file" multiple="true" class="file-loading" />
         @Html.DataBoundTextAreaFor(m => m.Blog, "value: Blog", new { style = "height: 75px", @class = "form-control" })
 	</div>

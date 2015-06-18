@@ -3,6 +3,7 @@
 	var KnockoutPackage = require("Packages/KnockoutPackage"),
 		ko = KnockoutPackage.ko,
 		komapping = KnockoutPackage.komapping,
+		Saved_Photo = require("ViewModels/Stories/Saved_Photo"),
 		FileUploader = require("Util/FileUploader"),
 		CollapsiblePanel = require("Util/CollapsiblePanel");
 
@@ -11,6 +12,7 @@
 		this._isEnabled = true;
 
 		KnockoutPackage.callFromJS(this, data);
+		this.Photos = ko.observableArray(); // TODO: Do this with komapping
 		komapping.fromJS(data, this);
 
 		this.FileInputElement = ko.observable();
@@ -24,7 +26,7 @@
 				ChapterID: 1
 			},
 			onUploadSuccess: function (event, data, previewId, index) {
-
+				self.Photos.push(new Saved_Photo(data.response));
 			},
 			onUploadError: function (event, data, previewId, index) {
 

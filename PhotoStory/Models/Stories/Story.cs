@@ -14,9 +14,9 @@ namespace PhotoStory.Models.Stories {
 
 		public User User { get; set; }
 
-		public int ChapterDraftID { get; set; }
+		public int DraftChapterID { get; set; }
 
-		public Chapter ChapterDraft { get; set; }
+		public Chapter DraftChapter { get; set; }
 
 		public IEnumerable<Chapter> Chapters { get; set; }
 

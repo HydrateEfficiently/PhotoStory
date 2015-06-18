@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PhotoStory.Controllers.LocalApi;
+using PhotoStory.Models.Chapters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,44 +12,26 @@ namespace PhotoStoryProgram {
 	class Program {
 
 		static void Main(string[] args) {
-			int i = 0;
 
-			Task outerTask = new Task(() => {
-				Thread.Sleep(1000);
-				i++;
+			Task task = new Task(async () => {
+				var photoApi = new PhotoApi();
+				await photoApi.Post(new PhotoStory.Models.Photos.Photo() {
+					StoryID = 1,
+					UserID = 1,
+					ChapterID = 1,
+					FileName = "test.jpg",
+					UploadTime = DateTime.Now
+				});
+
+				var chapterApi = new ChapterApi();
+				Chapter chapter = await chapterApi.Get(1);
+
+				Console.WriteLine(chapter.ID);
 			});
-			outerTask.Start();
 
-			var innerTask2 = outerTask
-				.ContinueWithOrRollback(
-					t => {
-						Thread.Sleep(1000);
-						throw new Exception();
-					},
-					t => {
-						Thread.Sleep(1000);
-						i--;
-					})
-				.ContinueWithOrRollback(
-					t => {
-						i++;
-					},
-					t => {
-						throw new Exception("Test innerTask2");
-					});
-
-			innerTask2.Wait();
+			task.Start();
+			task.Wait();
 		}
-	}
-
-	public static class TaskExtensions {
-
-		public static Task ContinueWithOrRollback(this Task task, Action<Task> continuationAction, Action<Task> rollbackAction) {
-			Task nextTask = task.ContinueWith(continuationAction, TaskContinuationOptions.OnlyOnRanToCompletion);
-			nextTask.ContinueWith(rollbackAction, TaskContinuationOptions.OnlyOnFaulted);
-			return nextTask;
-		}
-
 	}
 
 }

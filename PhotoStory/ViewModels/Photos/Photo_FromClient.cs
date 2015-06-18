@@ -10,7 +10,7 @@ using System.Web;
 
 namespace PhotoStory.ViewModels.Photos {
 
-	public class Photo_ToUpload : ViewModel<Photo> {
+	public class Photo_FromClient : ViewModel<Photo> {
 
 		[ModelMapping]
 		public int UserID { get; set; }
@@ -21,8 +21,8 @@ namespace PhotoStory.ViewModels.Photos {
 		[ModelMapping]
 		public int ChapterID { get; set; }
 
-		public Photo_ToUpload() { }
+		public Photo_FromClient() { }
 
-		public Photo_ToUpload(Photo model) : base(model) { }
+		public Photo_FromClient(Photo model) : base(model) { }
 	}
 }
