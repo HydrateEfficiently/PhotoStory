@@ -1,10 +1,10 @@
 ﻿using PhotoStory.Data.Relational;
-using PhotoStory.Models.Chapters;
+using PhotoStory.Models.Public.Chapters;
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using StoryEntity = PhotoStory.Data.Relational.Entities.Stories.Story;
-using StoryModel = PhotoStory.Models.Stories.Story;
+using StoryEntity = PhotoStory.Models.Entity.Stories.Story;
+using StoryModel = PhotoStory.Models.Public.Stories.Story;
 
 namespace PhotoStory.Controllers.LocalApi {
 

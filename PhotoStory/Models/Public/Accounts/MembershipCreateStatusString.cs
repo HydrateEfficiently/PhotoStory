@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Security;
 
-namespace PhotoStory.Models.Account {
+namespace PhotoStory.Models.Public.Accounts {
+
 	public static class MembershipCreateStatusString {
 
 		public static string Get(MembershipCreateStatus membershipCreateStatus) {

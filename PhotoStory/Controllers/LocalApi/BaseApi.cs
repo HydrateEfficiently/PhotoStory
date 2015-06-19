@@ -1,14 +1,14 @@
 ﻿using PhotoStory.Data.Relational;
-using PhotoStory.Data.Relational.Entities;
 using PhotoStory.Data.Static;
-using PhotoStory.Models;
-using PhotoStory.Util.SubModels;
+using PhotoStory.Models.Public;
+using PhotoStory.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace PhotoStory.Controllers.LocalApi {
 
@@ -120,9 +120,7 @@ namespace PhotoStory.Controllers.LocalApi {
 		}
 
 		private TEntityType GetEntity(TModelType model) {
-			TEntityType entity = Activator.CreateInstance<TEntityType>();
-			ModelMapper.MapFromModel(model, entity);
-			return entity;
+			return Mapper.Map<TModelType, TEntityType>(model);
 		}
 
 		private bool EntityExists(int id) {

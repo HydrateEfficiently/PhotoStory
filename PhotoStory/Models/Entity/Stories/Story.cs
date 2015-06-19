@@ -1,27 +1,22 @@
-﻿using PhotoStory.Data.Relational.Entities.Account;
-using PhotoStory.Data.Relational.Entities.Chapters;
-using PhotoStory.Util.SubModels;
+﻿using PhotoStory.Models.Entity.Accounts;
+using PhotoStory.Models.Entity.Chapters;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using StoryModel = PhotoStory.Models.Stories.Story;
+using StoryModel = PhotoStory.Models.Public.Stories.Story;
 
-namespace PhotoStory.Data.Relational.Entities.Stories {
+namespace PhotoStory.Models.Entity.Stories {
 
 	public class Story : Entity<StoryModel> {
 
-		[ModelMapping]
 		[Required]
 		public int UserID { get; set; }
 
-		[ModelMapping]
 		public int? DraftChapterID { get; set; }
 
-		[ModelMapping]
 		[ForeignKey("UserID")]
 		public virtual User User { get; set; }
 
-		[ModelMapping]
 		[ForeignKey("DraftChapterID")]
 		public virtual Chapter DraftChapter { get; set; }
 		

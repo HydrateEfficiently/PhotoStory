@@ -1,12 +1,12 @@
 ﻿using PhotoStory.Data.Relational;
-using PhotoStory.Models.Account;
+using PhotoStory.Models.Public.Accounts;
 using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.Security;
 using WebMatrix.WebData;
-using UserEntity = PhotoStory.Data.Relational.Entities.Account.User;
-using UserModel = PhotoStory.Models.Account.User;
+using UserEntity = PhotoStory.Models.Entity.Accounts.User;
+using UserModel = PhotoStory.Models.Public.Accounts.User;
 
 namespace PhotoStory.Controllers.LocalApi {
 
@@ -29,7 +29,7 @@ namespace PhotoStory.Controllers.LocalApi {
 					try {
 						WebSecurity.CreateUserAndAccount(user.Email, user.Password);
 						user.ID = WebSecurity.GetUserId(user.Email);
-						user.UserName = user.Email;
+						user.DisplayName = user.Email;
 						return await base.Put(user.ID, user).ContinueWith(t => {
 							return new UserEntity(user);
 						});

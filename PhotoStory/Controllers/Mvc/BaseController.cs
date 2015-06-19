@@ -1,5 +1,5 @@
 ﻿using PhotoStory.Data.Relational;
-using PhotoStory.Models.Account;
+using PhotoStory.Models.Public.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

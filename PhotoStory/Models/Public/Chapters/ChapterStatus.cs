@@ -1,4 +1,4 @@
-﻿namespace PhotoStory.Models.Chapters {
+﻿namespace PhotoStory.Models.Public.Chapters {
 
 	public enum ChapterStatus {
 

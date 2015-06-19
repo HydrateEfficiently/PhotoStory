@@ -1,5 +1,4 @@
-﻿using PhotoStory.Models.Photos;
-using PhotoStory.Util.SubModels;
+﻿using PhotoStory.Models.Public.Photos;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,25 +9,18 @@ namespace PhotoStory.ViewModels.Photos {
 
 	public class Photo_ToSave : ViewModel<Photo> {
 
-		[ModelMapping]
 		public int UserID { get; set; }
 
-		[ModelMapping]
 		public int StoryID { get; set; }
 
-		[ModelMapping]
 		public int ChapterID { get; set; }
 
-		[ModelMapping]
 		public string FileName { get; set; }
 
-		[ModelMapping]
 		public DateTime UploadTime { get; set; }
 
-		[ModelMapping(ModelMappingType: ModelMappingType.ConstructorParameter)]
 		public Stream InputStream { get; set; }
 
-		[ModelMapping(ModelMappingDirection: ModelMappingDirection.FromModel)]
 		public string Url { get; set; }
 
 		public Photo_ToSave() { }

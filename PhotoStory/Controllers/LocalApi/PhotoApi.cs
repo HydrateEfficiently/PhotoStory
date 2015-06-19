@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using PhotoModel = PhotoStory.Models.Photos.Photo;
-using PhotoEntity = PhotoStory.Data.Relational.Entities.Photos.Photo;
+using PhotoModel = PhotoStory.Models.Public.Photos.Photo;
+using PhotoEntity = PhotoStory.Models.Entity.Photos.Photo;
 using PhotoStory.Data.Relational;
 using System.Threading.Tasks;
 using PhotoStory.Data.Static;
@@ -33,13 +33,6 @@ namespace PhotoStory.Controllers.LocalApi {
 					async t => {
 						await Delete(model.ID);
 					});
-				//.ContinueWithOrRollback(
-				//	async t => {
-				//		await ChapterApi.AddPhoto(model.ChapterID, model);
-				//	},
-				//	async t => {
-				//		await Repository.DeleteAsync(model);
-				//	});
 			return model;
 		}
 

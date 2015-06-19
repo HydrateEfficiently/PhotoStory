@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PhotoStory.Models.Photos {
+namespace PhotoStory.Models.Public.Photos {
 
 	public class PhotoUrlGenerator {
 

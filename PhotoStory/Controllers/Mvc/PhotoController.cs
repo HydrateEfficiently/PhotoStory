@@ -1,5 +1,5 @@
 ﻿using PhotoStory.Controllers.LocalApi;
-using PhotoStory.Models.Photos;
+using PhotoStory.Models.Public.Photos;
 using PhotoStory.ViewModels.Photos;
 using System;
 using System.Threading.Tasks;

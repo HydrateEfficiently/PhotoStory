@@ -1,11 +1,8 @@
-﻿using PhotoStory.Models.Photos;
+﻿using PhotoStory.Models.Public.Photos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PhotoStory.Models.Chapters {
+namespace PhotoStory.Models.Public.Chapters {
 
 	public class Chapter : Model {
 

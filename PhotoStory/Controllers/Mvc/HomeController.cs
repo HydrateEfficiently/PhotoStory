@@ -1,6 +1,6 @@
 ﻿using PhotoStory.Controllers.LocalApi;
-using PhotoStory.Models.Chapters;
-using PhotoStory.Models.Photos;
+using PhotoStory.Models.Public.Chapters;
+using PhotoStory.Models.Public.Photos;
 using System;
 using System.Collections.Generic;
 using System.IO;

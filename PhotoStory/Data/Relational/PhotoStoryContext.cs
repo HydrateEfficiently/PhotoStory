@@ -1,5 +1,7 @@
-﻿using PhotoStory.Data.Relational.Entities.Photos;
-using PhotoStory.Data.Relational.Entities.Account;
+﻿using PhotoStory.Models.Entity.Accounts;
+using PhotoStory.Models.Entity.Chapters;
+using PhotoStory.Models.Entity.Photos;
+using PhotoStory.Models.Entity.Stories;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,8 +9,6 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PhotoStory.Data.Relational.Entities.Stories;
-using PhotoStory.Data.Relational.Entities.Chapters;
 
 namespace PhotoStory.Data.Relational {
 

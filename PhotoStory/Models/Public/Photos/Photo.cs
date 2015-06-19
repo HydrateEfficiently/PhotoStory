@@ -1,4 +1,4 @@
-﻿using PhotoStory.Models.Account;
+﻿using PhotoStory.Models.Public.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace PhotoStory.Models.Photos {
+namespace PhotoStory.Models.Public.Photos {
 
 	public class Photo : Model {
 
@@ -54,7 +54,7 @@ namespace PhotoStory.Models.Photos {
 			}
 		}
 
-		public Photo(Stream stream) {
+		public Photo(Stream stream) { // TODO: Mapping stream!
 			_stream = stream;
 		}
 

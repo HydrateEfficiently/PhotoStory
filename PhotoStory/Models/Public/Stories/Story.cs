@@ -1,12 +1,12 @@
-﻿using PhotoStory.Models.Account;
-using PhotoStory.Models.Chapters;
+﻿using PhotoStory.Models.Public.Accounts;
+using PhotoStory.Models.Public.Chapters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhotoStory.Models.Stories {
+namespace PhotoStory.Models.Public.Stories {
 
 	public class Story : Model {
 

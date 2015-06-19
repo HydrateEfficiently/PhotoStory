@@ -1,7 +1,7 @@
 ﻿using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
-using PhotoStory.Models.Photos;
+using PhotoStory.Models.Public.Photos;
 using System.Threading.Tasks;
 
 namespace PhotoStory.Data.Static {

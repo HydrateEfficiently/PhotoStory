@@ -1,7 +1,6 @@
-﻿using PhotoStory.Models.Account;
-using PhotoStory.Models.Chapters;
-using PhotoStory.Models.Stories;
-using PhotoStory.Util.SubModels;
+﻿using PhotoStory.Models.Public.Accounts;
+using PhotoStory.Models.Public.Chapters;
+using PhotoStory.Models.Public.Stories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +11,10 @@ namespace PhotoStory.ViewModels.Stories {
 
 	public class Story_Index : ViewModel<Story> {
 
-		[ModelMapping]
 		public int ID { get; set; }
 
-		[ModelMapping]
 		public User User { get; set; }
 
-		[ModelMapping]
 		public Chapter DraftChapter { get; set; }
 
 		public Story_Index(Story story) : base(story) { }

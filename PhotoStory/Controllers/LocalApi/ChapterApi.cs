@@ -1,9 +1,9 @@
 ﻿using PhotoStory.Data.Relational;
-using PhotoStory.Models.Photos;
+using PhotoStory.Models.Public.Photos;
 using System;
 using System.Threading.Tasks;
-using ChapterEntity = PhotoStory.Data.Relational.Entities.Chapters.Chapter;
-using ChapterModel = PhotoStory.Models.Chapters.Chapter;
+using ChapterEntity = PhotoStory.Models.Entity.Chapters.Chapter;
+using ChapterModel = PhotoStory.Models.Public.Chapters.Chapter;
 
 namespace PhotoStory.Controllers.LocalApi {
 

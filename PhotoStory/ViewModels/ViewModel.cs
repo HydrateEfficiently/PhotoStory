@@ -1,18 +1,14 @@
-﻿using PhotoStory.Models.Account;
-using PhotoStory.Util.SubModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace PhotoStory.ViewModels {
 
-namespace PhotoStory.ViewModels {
-
-	public abstract class ViewModel<TModel> : SubModel<TModel> {
+	public abstract class ViewModel<TModel> { //: SubModel<TModel> {
 
 		public ViewModel() { }
 
-		public ViewModel(TModel model) : base(model) { }
+		public ViewModel(TModel model) { } // : base(model) { }
+
+		public TModel ToModel() {
+			return default(TModel);
+		}
 
 	}
 }

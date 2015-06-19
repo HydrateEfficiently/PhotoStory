@@ -1,47 +1,34 @@
-﻿using PhotoStory.Data.Relational.Entities.Photos;
-using PhotoStory.Data.Relational.Entities.Stories;
-using PhotoStory.Models.Chapters;
-using PhotoStory.Util.SubModels;
+﻿using PhotoStory.Models.Entity.Photos;
+using PhotoStory.Models.Entity.Stories;
+using PhotoStory.Models.Public.Chapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ChapterModel = PhotoStory.Models.Chapters.Chapter;
+using ChapterModel = PhotoStory.Models.Public.Chapters.Chapter;
 
-namespace PhotoStory.Data.Relational.Entities.Chapters {
+namespace PhotoStory.Models.Entity.Chapters {
 
 	public class Chapter : Entity<ChapterModel> {
 
-		[ModelMapping]
 		[Required]
 		public int StoryID { get; set; }
 
 		[ForeignKey("StoryID")]
 		public virtual Story Story { get; set; }
 
-		[ModelMapping]
 		public int UserID { get; set; }
 
-		[ModelMapping]
 		public string ChapterName { get; set; }
 
-		[ModelMapping]
 		public ChapterStatus ChapterStatus { get; set; }
 
-		[ModelMapping]
 		public DateTime? StartTime { get; set; }
 
-		[ModelMapping]
 		public DateTime? LastDraftSavedTime { get; set; }
 
-		[ModelMapping]
 		public ICollection<Photo> Photos { get; set; }
 
-		[ModelMapping]
 		public string Blog { get; set; }
 
 		public Chapter() { }
