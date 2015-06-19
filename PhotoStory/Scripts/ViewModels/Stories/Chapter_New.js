@@ -1,4 +1,4 @@
-﻿define(function (require) {
+define(function (require) {
 
 	var KnockoutPackage = require("Packages/KnockoutPackage"),
 		ko = KnockoutPackage.ko,

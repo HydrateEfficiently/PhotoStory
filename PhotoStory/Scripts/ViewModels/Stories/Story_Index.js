@@ -10,7 +10,7 @@
 
 		KnockoutPackage.callFromJS(this, data);
 		komapping.fromJS(data, this); // TODO: don't map ChapterDraft
-		this.Chapter_New = new Chapter_New(data.ChapterDraft);
+		this.Chapter_New = new Chapter_New(data.DraftChapter);
 	}
 
 	return Story_Index;

@@ -1,15 +1,7 @@
 ﻿using PhotoStory.Controllers.LocalApi;
 using PhotoStory.Models.Public.Chapters;
-using PhotoStory.Models.Public.Stories;
 using PhotoStory.ViewModels.Chapters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Results;
 using System.Web.Mvc;
 using MyTaskExtensions = PhotoStory.Util.Extensions.TaskExtensions;
 

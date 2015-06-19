@@ -57,11 +57,16 @@ namespace PhotoStory.Controllers.LocalApi {
 
 			Chapter savedDraftChapter = null;
 			if (chapter.ID > 0) {
-				await _chapterApi.Put(savedDraftChapter.ID, chapter);
+				await _chapterApi.Put(chapter.ID, chapter);
 				savedDraftChapter = await _chapterApi.Get(chapter.ID);
 			} else {
 				savedDraftChapter = await _chapterApi.Post(chapter);
 			}
+
+			story.DraftChapterID = savedDraftChapter.ID;
+			Context.SaveChanges();
+
+			StoryEntity story2 = await WorkingDbSet.FindAsync(storyId);
 
 			return savedDraftChapter;
 		}
