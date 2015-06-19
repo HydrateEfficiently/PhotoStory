@@ -194,7 +194,6 @@
     <Compile Include="Models\Public\Accounts\MembershipCreateStatusString.cs" />
     <Compile Include="Models\Public\Chapters\Chapter.cs" />
     <Compile Include="Models\Public\Chapters\ChapterStatus.cs" />
-    <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Public\Photos\PhotoUpload.cs" />
     <Compile Include="Models\Public\Accounts\User.cs" />
     <Compile Include="Models\Public\Model.cs" />
@@ -205,8 +204,8 @@
     <Compile Include="Data\Static\Photo\Repository.cs" />
     <Compile Include="Data\Static\Photo\S3Repository.cs" />
     <Compile Include="Data\Static\Photo\RepositorySettings.cs" />
-    <Compile Include="Data\Relational\PhotoStoryContext.cs" />
-    <Compile Include="Data\Relational\PhotoStoryInitializer.cs" />
+    <Compile Include="Models\Entity\PhotoStoryContext.cs" />
+    <Compile Include="Models\Entity\PhotoStoryInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

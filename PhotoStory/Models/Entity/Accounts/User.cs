@@ -14,8 +14,5 @@ namespace PhotoStory.Models.Entity.Accounts {
 		public string Email { get; set; }
 
 		public User() { }
-
-		public User(UserModel userModel) : base(userModel) { }
-
 	}
 }

@@ -32,7 +32,5 @@ namespace PhotoStory.Models.Entity.Chapters {
 		public string Blog { get; set; }
 
 		public Chapter() { }
-
-		public Chapter(ChapterModel chapterModel) : base(chapterModel) { }
 	}
 }

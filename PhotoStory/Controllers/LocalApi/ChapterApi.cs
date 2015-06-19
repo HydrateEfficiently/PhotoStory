@@ -1,4 +1,4 @@
-﻿using PhotoStory.Data.Relational;
+﻿using PhotoStory.Models.Entity;
 using PhotoStory.Models.Public.Photos;
 using System;
 using System.Threading.Tasks;

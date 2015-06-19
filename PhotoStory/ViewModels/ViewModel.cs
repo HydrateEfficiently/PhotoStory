@@ -1,14 +1,26 @@
-﻿namespace PhotoStory.ViewModels {
+﻿using AutoMapper;
+using System;
 
-	public abstract class ViewModel<TModel> { //: SubModel<TModel> {
+namespace PhotoStory.ViewModels {
+
+	public abstract class ViewModel<TModel> {
 
 		public ViewModel() { }
 
-		public ViewModel(TModel model) { } // : base(model) { }
-
-		public TModel ToModel() {
-			return default(TModel);
+		public ViewModel(TModel model) {
+			CreateMapIfNotExists(typeof(TModel), GetType());
+			Mapper.Map(model, this);
 		}
 
+		public TModel ToModel() {
+			CreateMapIfNotExists(GetType(), typeof(TModel));
+			return Mapper.Map<TModel>(this);
+		}
+
+		private void CreateMapIfNotExists(Type sourceType, Type destinationType) {
+			if (Mapper.FindTypeMapFor(sourceType, destinationType) == null) {
+				Mapper.CreateMap(sourceType, destinationType);
+			}
+		}
 	}
 }

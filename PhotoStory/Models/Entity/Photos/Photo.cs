@@ -21,7 +21,5 @@ namespace PhotoStory.Models.Entity.Photos {
 		public Chapter Chapter { get; set; }
 
 		public Photo() { }
-
-		public Photo(PhotoModel model) : base(model) { }
 	}
 }

@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StoryEntity = PhotoStory.Models.Entity.Stories.Story;
 
 namespace PhotoStory.Models.Public.Stories {
 
-	public class Story : Model {
+	public class Story : Model<StoryEntity> {
 
 		public int UserID { get; set; }
 

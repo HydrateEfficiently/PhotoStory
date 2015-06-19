@@ -2,15 +2,10 @@
 using PhotoStory.Models.Entity.Chapters;
 using PhotoStory.Models.Entity.Photos;
 using PhotoStory.Models.Entity.Stories;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PhotoStory.Data.Relational {
+namespace PhotoStory.Models.Entity {
 
 	public class PhotoStoryContext : DbContext {
 

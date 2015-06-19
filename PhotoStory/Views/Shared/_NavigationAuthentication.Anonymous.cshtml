@@ -4,7 +4,7 @@
 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "navbar-form navbar-right" })) {
 	@Html.AntiForgeryToken()
 	<div class="form-group">
-		@Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Username" })
+		@Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control", placeholder = "Username" })
 	</div>
 	<div class="form-group">
 		@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })

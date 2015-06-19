@@ -1,7 +1,6 @@
-﻿using PhotoStory.Data.Relational;
+﻿using PhotoStory.Models.Entity;
 using PhotoStory.Models.Public.Accounts;
 using System;
-using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.Security;
 using WebMatrix.WebData;
@@ -31,7 +30,7 @@ namespace PhotoStory.Controllers.LocalApi {
 						user.ID = WebSecurity.GetUserId(user.Email);
 						user.DisplayName = user.Email;
 						return await base.Put(user.ID, user).ContinueWith(t => {
-							return new UserEntity(user);
+							return user.ToEntity();
 						});
 
 					} catch (MembershipCreateUserException ex) {

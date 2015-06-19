@@ -73,7 +73,7 @@ namespace PhotoStory.Controllers.Mvc {
 		}
 
 		private bool Login(User_Login user) {
-			if (ModelState.IsValid && WebSecurity.Login(user.UserName, user.Password)) {
+			if (ModelState.IsValid && WebSecurity.Login(user.DisplayName, user.Password)) {
 				PopulateCurrentUser();
 				return true;
 			}

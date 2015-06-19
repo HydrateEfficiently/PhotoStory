@@ -10,7 +10,7 @@ using System.Web;
 
 namespace PhotoStory.Models.Public.Photos {
 
-	public class Photo : Model {
+	public class Photo : Model<PhotoStory.Models.Entity.Photos.Photo> {
 
 		private Stream _stream;
 

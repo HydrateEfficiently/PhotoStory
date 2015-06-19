@@ -6,7 +6,7 @@ namespace PhotoStory.ViewModels.Account {
 	public class User_Login : ViewModel<User> {
 
 		[Required]
-		public string UserName { get; set; }
+		public string DisplayName { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]
@@ -18,7 +18,7 @@ namespace PhotoStory.ViewModels.Account {
 		public User_Login(User model) : base(model) { }
 
 		public User_Login(User_Register userRegister) {
-			UserName = userRegister.Email;
+			DisplayName = userRegister.Email;
 			Password = userRegister.Password;
 		}
 	}

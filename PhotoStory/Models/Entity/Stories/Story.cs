@@ -24,7 +24,5 @@ namespace PhotoStory.Models.Entity.Stories {
 		public virtual ICollection<Chapter> Chapters { get; set; }
 
 		public Story() { }
-
-		public Story(StoryModel model) : base(model) { }
 	}
 }

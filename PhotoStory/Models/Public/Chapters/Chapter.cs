@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PhotoStory.Models.Public.Chapters {
 
-	public class Chapter : Model {
+	public class Chapter : Model<PhotoStory.Models.Entity.Chapters.Chapter> {
 
 		public int StoryID { get; set; }
 

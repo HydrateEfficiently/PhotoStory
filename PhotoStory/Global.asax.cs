@@ -1,10 +1,7 @@
-﻿using PhotoStory.Data.Relational;
+﻿using PhotoStory.Models.Entity;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -23,14 +20,6 @@ namespace PhotoStory {
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-			var userModel = new PhotoStory.Models.Public.Accounts.User() {
-				DisplayName = "Mike",
-				Password = "Test",
-				Email = "email@domain.com"
-			};
-
-			var userEntity = new PhotoStory.Models.Entity.Accounts.User(userModel);
 
 			Database.SetInitializer<PhotoStoryContext>(null);
 			try {

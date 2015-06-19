@@ -1,12 +1,6 @@
-﻿using PhotoStory.Data.Relational;
+﻿using PhotoStory.Models.Entity;
 using PhotoStory.Models.Public.Accounts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Web.Security;
 using WebMatrix.WebData;
 
 namespace PhotoStory.Controllers.Mvc {

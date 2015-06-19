@@ -1,5 +1,4 @@
-﻿using PhotoStory.Data.Relational;
-using PhotoStory.Data.Static;
+﻿using PhotoStory.Data.Static;
 using PhotoStory.Models.Public;
 using PhotoStory.Models.Entity;
 using System;
@@ -13,7 +12,7 @@ using AutoMapper;
 namespace PhotoStory.Controllers.LocalApi {
 
 	public abstract class BaseApi<TModelType, TEntityType> : IDisposable
-		where TModelType : Model
+		where TModelType : Model<TEntityType>
 		where TEntityType : Entity<TModelType> {
 
 		private PhotoStoryContext _context;
@@ -120,7 +119,7 @@ namespace PhotoStory.Controllers.LocalApi {
 		}
 
 		private TEntityType GetEntity(TModelType model) {
-			return Mapper.Map<TModelType, TEntityType>(model);
+			return model.ToEntity();
 		}
 
 		private bool EntityExists(int id) {

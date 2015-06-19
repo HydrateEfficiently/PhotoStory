@@ -1,7 +1,7 @@
 ﻿@model PhotoStory.Models.Public.Accounts.User
 
 <div class="navbar-btn btn-group navbar-right">
-	<a href="@Url.Action("Index", "Story")" class="btn btn-primary"><img class="profile-image navbar-profile-image" src="@Url.Content(Model.ProfileImageUrl)" /><span> @Model.UserName</span></a>
+	<a href="@Url.Action("Index", "Story")" class="btn btn-primary"><img class="profile-image navbar-profile-image" src="@Url.Content(Model.ProfileImageUrl)" /><span> @Model.DisplayName</span></a>
 	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		<span class="caret"></span>
 		<span class="sr-only">Toggle Dropdown</span>

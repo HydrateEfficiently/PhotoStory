@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using PhotoModel = PhotoStory.Models.Public.Photos.Photo;
-using PhotoEntity = PhotoStory.Models.Entity.Photos.Photo;
-using PhotoStory.Data.Relational;
-using System.Threading.Tasks;
-using PhotoStory.Data.Static;
+﻿using PhotoStory.Data.Static;
+using PhotoStory.Models.Entity;
 using PhotoStory.Util.Extensions;
+using System.Threading.Tasks;
+using PhotoEntity = PhotoStory.Models.Entity.Photos.Photo;
+using PhotoModel = PhotoStory.Models.Public.Photos.Photo;
 
 namespace PhotoStory.Controllers.LocalApi {
 

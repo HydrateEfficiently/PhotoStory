@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
+using UserEntity = PhotoStory.Models.Entity.Accounts.User;
 
 namespace PhotoStory.Models.Public.Accounts {
 
-	public class User : Model {
+	public class User : Model<UserEntity> {
 
 		public string DisplayName { get; set; }
 

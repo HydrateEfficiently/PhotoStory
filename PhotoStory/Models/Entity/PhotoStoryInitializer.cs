@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
-namespace PhotoStory.Data.Relational {
+namespace PhotoStory.Models.Entity {
 
 	public class PhotoStoryInitializer : DropCreateDatabaseIfModelChanges<PhotoStoryContext> {
 
